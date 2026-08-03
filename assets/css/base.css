@@ -1,0 +1,140 @@
+/* Base styles — Stirling Kitchens Ltd */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--clr-dark);
+  background-color: var(--clr-white);
+  padding-top: var(--header-h);
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--sp-4);
+  z-index: 9999;
+  padding: var(--sp-3) var(--sp-6);
+  background: var(--clr-green);
+  color: var(--clr-navy);
+  font-weight: var(--fw-bold);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  text-decoration: none;
+  font-size: var(--text-sm);
+}
+.skip-link:focus { top: 0; }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font);
+  font-weight: var(--fw-bold);
+  line-height: var(--leading-tight);
+  color: var(--clr-dark);
+}
+h1 { font-size: clamp(2rem, 5vw, var(--text-5xl)); }
+h2 { font-size: clamp(1.75rem, 3.5vw, var(--text-4xl)); }
+h3 { font-size: clamp(1.2rem, 2vw, var(--text-2xl)); }
+h4 { font-size: var(--text-xl); }
+h5 { font-size: var(--text-md); font-weight: var(--fw-semibold); }
+
+p {
+  line-height: var(--leading-relaxed);
+  max-width: 72ch;
+}
+
+a {
+  color: var(--clr-green-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+a:hover { color: var(--clr-green); }
+a:focus-visible {
+  outline: 3px solid var(--clr-green);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+
+img, svg { display: block; max-width: 100%; height: auto; }
+ul, ol { list-style: none; }
+address { font-style: normal; }
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--sp-6);
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Utility */
+.hidden { display: none !important; }
+.text-center { text-align: center; }
+.text-green { color: var(--clr-green); }
+
+/* Section label */
+.section-label {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-green);
+  margin-bottom: var(--sp-4);
+}
+
+/* Section spacing */
+.section       { padding-block: var(--sp-16); }
+.section--sm   { padding-block: var(--sp-10); }
+.section--lg   { padding-block: var(--sp-24); }
+
+.section--dark {
+  background-color: var(--clr-navy);
+  color: var(--clr-white);
+}
+.section--dark h1,
+.section--dark h2,
+.section--dark h3,
+.section--dark h4 { color: var(--clr-white); }
+
+.section--light { background-color: var(--clr-light); }
+.section--green-tint { background-color: var(--clr-green-tint); }
+
+/* Flow spacing */
+.flow > * + * { margin-top: var(--sp-6); }
+.flow--sm > * + * { margin-top: var(--sp-4); }
