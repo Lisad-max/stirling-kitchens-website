@@ -38,6 +38,10 @@
   width: auto;
 }
 
+.site-header .site-logo {
+  height: 60px;
+}
+
 /* Nav */
 .main-nav {
   display: flex;
@@ -697,17 +701,17 @@
 ======================================== */
 
 .team-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--sp-8);
 }
-@media (min-width: 640px) {
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (min-width: 1024px) {
-  .team-grid { grid-template-columns: repeat(4, 1fr); }
-}
 
-.team-card { text-align: center; }
+.team-card {
+  text-align: center;
+  flex: 1 1 300px;
+  max-width: 340px;
+}
 
 .team-photo {
   width: 160px;
