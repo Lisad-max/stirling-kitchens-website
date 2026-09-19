@@ -142,11 +142,6 @@
   padding: var(--sp-2) var(--sp-4);
   min-height: 40px;
 }
-.header-cta .full-num { display: none; }
-@media (min-width: 480px) {
-  .header-cta .full-num { display: inline; }
-  .header-cta .short-label { display: none; }
-}
 
 /* ========================================
    BUTTONS
