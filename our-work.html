@@ -14,6 +14,83 @@
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="icon" type="image/png" href="assets/stirling-kitchens-favicon.png">
   <link rel="apple-touch-icon" href="assets/stirling-kitchens-favicon.png">
+  <style>
+    .masonry {
+      column-count: 3;
+      column-gap: 1rem;
+      margin-top: 2rem;
+    }
+    .masonry .gallery-item {
+      break-inside: avoid;
+      margin: 0 0 1rem;
+      cursor: pointer;
+    }
+    .masonry .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .masonry .gallery-item:hover img { opacity: 0.85; }
+    @media (max-width: 900px) { .masonry { column-count: 2; } }
+    @media (max-width: 520px)  { .masonry { column-count: 1; } }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.93);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox-img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+      display: block;
+    }
+    #lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      color: #fff;
+      font-size: 2.2rem;
+      line-height: 1;
+      cursor: pointer;
+      background: none;
+      border: none;
+      opacity: 0.8;
+    }
+    #lightbox-close:hover { opacity: 1; }
+    #lightbox-prev, #lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 1rem;
+      opacity: 0.6;
+      line-height: 1;
+    }
+    #lightbox-prev:hover, #lightbox-next:hover { opacity: 1; }
+    #lightbox-prev { left: 0.5rem; }
+    #lightbox-next { right: 0.5rem; }
+    #lightbox-counter {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -100,225 +177,140 @@
         <div class="section-header">
           <span class="section-label">Real jobs, real homes</span>
           <h2 id="kitchens-heading" class="gallery-section-title">Completed Kitchens</h2>
-          <p>Every kitchen below was designed, manufactured in our workshop and installed by our team.</p>
+          <p>Every kitchen below was designed, manufactured in our workshop and installed by our team. Click any image to view it larger.</p>
         </div>
-
-        <h3 style="margin-bottom: 1rem;">Open-plan kitchen with marble island</h3>
-        <div class="gallery-grid">
+        <div class="masonry">
           <figure class="gallery-item">
             <img src="AI%20kitchen%20images%20Image/Clive%20and%20lisa%20kitchen%20.jpg"
-                 alt="Completed Stirling Kitchens project: open-plan kitchen with waterfall marble island and pendant lighting"
-                 width="800" height="600"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
+                 alt="Open-plan kitchen with waterfall marble island and pendant lighting"
+                 width="800" height="600" loading="lazy">
           </figure>
           <figure class="gallery-item">
-            <img src="AI%20kitchen%20images%20Image/Donaldson-10.jpg"
-                 alt="Completed Stirling Kitchens project: kitchen island with built-in oven wall"
-                 width="800" height="600"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="AI%20kitchen%20images%20Image/20260202_104549.jpg"
-                 alt="Completed Stirling Kitchens project: detail of marble benchtop and mitred join"
-                 width="800" height="600"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
-          </figure>
-        </div>
-
-        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">Family kitchen with freestanding range</h3>
-        <div class="gallery-grid">
-          <figure class="gallery-item">
-            <img src="AI%20kitchen%20images%20Image/Photo%2001-08-2026%2C%2012%2018%2030%20PM.jpg"
-                 alt="Completed Stirling Kitchens project: freestanding range cooker with stone splashback"
-                 width="800" height="600"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="AI%20kitchen%20images%20Image/Photo%2001-08-2026%2C%2012%2022%2014%20PM.jpg"
-                 alt="Completed Stirling Kitchens project: detail of stone splashback and range cooker"
-                 width="800" height="600"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
-          </figure>
-        </div>
-
-        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">White shaker kitchen with cream range cooker</h3>
-        <div class="gallery-grid">
-          <figure class="gallery-item">
-            <img src="Landscape/howick-cream-range-marble-splashback.png"
-                 alt="Completed project: white shaker cabinetry with cream range cooker, marble splashback and under-cabinet lighting"
-                 width="1280" height="853"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="Portrait/howick-cream-range-shaker-cabinetry.png"
-                 alt="Completed project: floor-to-ceiling white shaker cabinetry, cream range cooker and timber island benchtop"
-                 width="960" height="1200"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
-          </figure>
-        </div>
-
-        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">Country kitchen with live-edge timber island</h3>
-        <div class="gallery-grid">
-          <figure class="gallery-item">
-            <img src="Landscape/clevedon-live-edge-island-range-cooker.png"
-                 alt="Completed project: white shaker kitchen with live-edge timber island and cream range cooker, rural outlook through large windows"
-                 width="1280" height="853"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
+            <img src="Landscape/remuera-charcoal-waterfall-marble-island.png"
+                 alt="Dark charcoal flat-panel kitchen with oversized waterfall marble island and brass pendants"
+                 width="1280" height="853" loading="lazy">
           </figure>
           <figure class="gallery-item">
             <img src="Portrait/clevedon-live-edge-island-tractor-stools.png"
-                 alt="Completed project: live-edge timber island with integrated sink, tractor-seat stools and cream range cooker"
-                 width="960" height="1200"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
+                 alt="Live-edge timber island with integrated sink, tractor-seat stools and cream range cooker"
+                 width="960" height="1200" loading="lazy">
           </figure>
           <figure class="gallery-item">
-            <img src="Portrait/clevedon-live-edge-island-brass-tap.png"
-                 alt="Completed project: live-edge timber island with brass mixer tap, shaker cabinetry and French doors to garden"
-                 width="960" height="1200"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
-          </figure>
-        </div>
-
-        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">Contemporary open-plan with built-in study</h3>
-        <div class="gallery-grid">
-          <figure class="gallery-item">
-            <img src="Landscape/botany-white-kitchen-timber-study-nook.png"
-                 alt="Completed project: white flat-panel kitchen with island and built-in timber-lined study nook"
-                 width="1280" height="853"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="Portrait/botany-white-island-built-in-study.png"
-                 alt="Completed project: modern white kitchen with black stools and integrated timber study nook"
-                 width="960" height="1200"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="Portrait/botany-modern-white-kitchen-island.png"
-                 alt="Completed project: open-plan white kitchen with timber accents, island and study nook"
-                 width="960" height="1200"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
-          </figure>
-        </div>
-
-        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">White kitchen with dark island and herringbone splashback</h3>
-        <div class="gallery-grid">
-          <figure class="gallery-item">
-            <img src="Landscape/titirangi-dark-island-herringbone-splashback.png"
-                 alt="Completed project: white flat-panel kitchen with dark textured island, white stone benchtop and herringbone tile splashback"
-                 width="1280" height="853"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="Portrait/titirangi-white-kitchen-dark-island-open-plan.png"
-                 alt="Completed project: white kitchen with dark island, stone benchtop and open-plan dining area"
-                 width="960" height="1200"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
-          </figure>
-        </div>
-
-        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">Dark charcoal kitchen with waterfall marble island</h3>
-        <div class="gallery-grid">
-          <figure class="gallery-item">
-            <img src="Landscape/remuera-charcoal-waterfall-marble-island.png"
-                 alt="Completed project: dark charcoal flat-panel kitchen with oversized waterfall marble island and brass pendants"
-                 width="1280" height="853"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
+            <img src="Landscape/epsom-grey-glass-front-cabinetry-marble-island.png"
+                 alt="Full wall of French grey cabinetry with glass-fronted uppers, marble island and patterned splashback"
+                 width="1280" height="853" loading="lazy">
           </figure>
           <figure class="gallery-item">
             <img src="Portrait/remuera-charcoal-cabinetry-brass-pendants.png"
-                 alt="Completed project: floor-to-ceiling dark charcoal cabinetry with waterfall marble island, brass pendants and under-island lighting"
-                 width="960" height="1200"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
+                 alt="Floor-to-ceiling dark charcoal cabinetry with waterfall marble island, brass pendants and under-island lighting"
+                 width="960" height="1200" loading="lazy">
           </figure>
-        </div>
-
-        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">French grey kitchen with glass-front cabinetry</h3>
-        <div class="gallery-grid">
           <figure class="gallery-item">
-            <img src="Landscape/epsom-grey-glass-front-cabinetry-marble-island.png"
-                 alt="Completed project: full wall of French grey cabinetry with glass-fronted uppers, marble island and patterned splashback"
-                 width="1280" height="853"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
+            <img src="Landscape/clevedon-live-edge-island-range-cooker.png"
+                 alt="White shaker kitchen with live-edge timber island and cream range cooker, rural outlook through large windows"
+                 width="1280" height="853" loading="lazy">
+          </figure>
+          <figure class="gallery-item">
+            <img src="AI%20kitchen%20images%20Image/Donaldson-10.jpg"
+                 alt="Kitchen island with built-in oven wall and stone benchtop"
+                 width="800" height="600" loading="lazy">
+          </figure>
+          <figure class="gallery-item">
+            <img src="Portrait/howick-cream-range-shaker-cabinetry.png"
+                 alt="Floor-to-ceiling white shaker cabinetry with cream range cooker and timber island benchtop"
+                 width="960" height="1200" loading="lazy">
+          </figure>
+          <figure class="gallery-item">
+            <img src="Landscape/botany-white-kitchen-timber-study-nook.png"
+                 alt="White flat-panel kitchen with island and built-in timber-lined study nook"
+                 width="1280" height="853" loading="lazy">
           </figure>
           <figure class="gallery-item">
             <img src="Portrait/epsom-grey-kitchen-vintage-cooker-island.png"
-                 alt="Completed project: grey painted kitchen with glass-fronted uppers, marble island and vintage-style cooker"
-                 width="960" height="1200"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
+                 alt="Grey painted kitchen with glass-fronted uppers, marble island and vintage-style cooker"
+                 width="960" height="1200" loading="lazy">
+          </figure>
+          <figure class="gallery-item">
+            <img src="Landscape/titirangi-dark-island-herringbone-splashback.png"
+                 alt="White flat-panel kitchen with dark textured island, white stone benchtop and herringbone tile splashback"
+                 width="1280" height="853" loading="lazy">
+          </figure>
+          <figure class="gallery-item">
+            <img src="Portrait/clevedon-live-edge-island-brass-tap.png"
+                 alt="Live-edge timber island with brass mixer tap, shaker cabinetry and French doors to garden"
+                 width="960" height="1200" loading="lazy">
+          </figure>
+          <figure class="gallery-item">
+            <img src="AI%20kitchen%20images%20Image/Photo%2001-08-2026%2C%2012%2018%2030%20PM.jpg"
+                 alt="Freestanding range cooker with stone splashback and custom cabinetry"
+                 width="800" height="600" loading="lazy">
+          </figure>
+          <figure class="gallery-item">
+            <img src="Portrait/titirangi-white-kitchen-dark-island-open-plan.png"
+                 alt="White kitchen with dark island, stone benchtop and open-plan dining area"
+                 width="960" height="1200" loading="lazy">
+          </figure>
+          <figure class="gallery-item">
+            <img src="Landscape/howick-cream-range-marble-splashback.png"
+                 alt="White shaker cabinetry with cream range cooker, marble splashback and under-cabinet lighting"
+                 width="1280" height="853" loading="lazy">
+          </figure>
+          <figure class="gallery-item">
+            <img src="Portrait/botany-white-island-built-in-study.png"
+                 alt="Modern white kitchen with black stools and integrated timber study nook"
+                 width="960" height="1200" loading="lazy">
+          </figure>
+          <figure class="gallery-item">
+            <img src="AI%20kitchen%20images%20Image/20260202_104549.jpg"
+                 alt="Detail of marble benchtop and mitred join"
+                 width="800" height="600" loading="lazy">
+          </figure>
+          <figure class="gallery-item">
+            <img src="Landscape/kumeu-farmhouse-kitchen-island-timber-benchtop.png"
+                 alt="White shaker kitchen island with solid timber benchtop, integrated sink and black bridge tapware"
+                 width="1280" height="853" loading="lazy">
           </figure>
           <figure class="gallery-item">
             <img src="Landscape/epsom-grey-kitchen-designer-pendants.png"
-                 alt="Completed project: French grey kitchen showing island and floor-to-ceiling glass-front cabinetry"
-                 width="1280" height="853"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
+                 alt="French grey kitchen showing island and floor-to-ceiling glass-front cabinetry with designer pendants"
+                 width="1280" height="853" loading="lazy">
           </figure>
-        </div>
-
-        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">Farmhouse kitchen with solid timber island benchtop</h3>
-        <div class="gallery-grid">
           <figure class="gallery-item">
-            <img src="Landscape/kumeu-farmhouse-kitchen-island-timber-benchtop.png"
-                 alt="Completed project: white shaker kitchen island with solid timber benchtop, integrated sink and black bridge tapware"
-                 width="1280" height="853"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
+            <img src="AI%20kitchen%20images%20Image/Photo%2001-08-2026%2C%2012%2022%2014%20PM.jpg"
+                 alt="Detail of stone splashback and range cooker"
+                 width="800" height="600" loading="lazy">
+          </figure>
+          <figure class="gallery-item">
+            <img src="Portrait/botany-modern-white-kitchen-island.png"
+                 alt="Open-plan white kitchen with timber accents and island"
+                 width="960" height="1200" loading="lazy">
           </figure>
         </div>
-
       </div>
     </section>
 
     <!-- Completed bathrooms -->
     <section class="section section--sm" aria-labelledby="bathrooms-heading">
       <div class="container">
-        <h2 id="bathrooms-heading" class="gallery-section-title">Completed Bathrooms</h2>
-        <p style="margin-bottom: 2rem;">Custom vanities and bathroom cabinetry, designed and built in our workshop.</p>
-        <div class="gallery-grid">
+        <div class="section-header">
+          <h2 id="bathrooms-heading" class="gallery-section-title">Completed Bathrooms</h2>
+          <p>Custom vanities and bathroom cabinetry, designed and built in our workshop. Click any image to view it larger.</p>
+        </div>
+        <div class="masonry">
           <figure class="gallery-item">
             <img src="Landscape/parnell-dark-timber-vanity-marble-bathroom.png"
-                 alt="Completed bathroom: dark timber vanity with twin vessel basins, black marble benchtop, glass shower and freestanding bath"
-                 width="1280" height="853"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
+                 alt="Dark timber vanity with twin vessel basins, black marble benchtop, glass shower and freestanding bath"
+                 width="1280" height="853" loading="lazy">
+          </figure>
+          <figure class="gallery-item">
+            <img src="Landscape/ponsonby-walnut-floating-vanity-vessel-sink.png"
+                 alt="Walnut floating vanity with vessel sink, white stone benchtop and large round LED-backlit mirror"
+                 width="960" height="1200" loading="lazy">
           </figure>
           <figure class="gallery-item">
             <img src="Portrait/parnell-twin-vessel-sinks-freestanding-bath.png"
-                 alt="Completed bathroom: custom dark timber vanity with twin vessel sinks on dark marble benchtop, black marble shower wall and freestanding bath"
-                 width="960" height="1200"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
-          </figure>
-        </div>
-
-        <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">Walnut floating vanity with vessel sink</h3>
-        <div class="gallery-grid">
-          <figure class="gallery-item">
-            <img src="Landscape/ponsonby-walnut-floating-vanity-vessel-sink.png"
-                 alt="Completed bathroom: walnut floating vanity with vessel sink, white stone benchtop and large round LED-backlit mirror"
-                 width="960" height="1200"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
+                 alt="Custom dark timber vanity with twin vessel sinks on dark marble benchtop, black marble shower wall and freestanding bath"
+                 width="960" height="1200" loading="lazy">
           </figure>
         </div>
       </div>
@@ -332,27 +324,21 @@
           <h2 id="furniture-heading" class="gallery-section-title">Custom Furniture &amp; Joinery</h2>
           <p>Bespoke joinery for any room — from built-in libraries and bar units to commercial counters. All designed and built in our East Tāmaki workshop.</p>
         </div>
-        <div class="gallery-grid">
-          <figure class="gallery-item">
-            <img src="Landscape/mt-eden-white-library-bookcase-roller-ladder.png"
-                 alt="Completed project: white built-in library bookcase with open shelving, cabinet base and black roller ladder"
-                 width="960" height="1200"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
-          </figure>
+        <div class="masonry">
           <figure class="gallery-item">
             <img src="Landscape/herne-bay-dark-bar-unit-backlit-onyx-wine-fridge.png"
-                 alt="Completed project: dark shaker bar unit with backlit onyx stone panel, integrated wine fridge and brass handles on herringbone floor"
-                 width="1280" height="853"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
+                 alt="Dark shaker bar unit with backlit onyx stone panel, integrated wine fridge and brass handles on herringbone floor"
+                 width="1280" height="853" loading="lazy">
+          </figure>
+          <figure class="gallery-item">
+            <img src="Landscape/mt-eden-white-library-bookcase-roller-ladder.png"
+                 alt="White built-in library bookcase with open shelving, cabinet base and black roller ladder"
+                 width="960" height="1200" loading="lazy">
           </figure>
           <figure class="gallery-item">
             <img src="Landscape/newmarket-fluted-reception-counter-brass-base.png"
-                 alt="Completed project: dark green fluted joinery counter with curved brass base lighting and stone top"
-                 width="1280" height="853"
-                 loading="lazy">
-            <figcaption class="gallery-item__caption">Completed project</figcaption>
+                 alt="Dark green fluted joinery counter with curved brass base lighting and stone top"
+                 width="1280" height="853" loading="lazy">
           </figure>
         </div>
       </div>
@@ -419,6 +405,55 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button id="lightbox-close" aria-label="Close">&times;</button>
+    <button id="lightbox-prev" aria-label="Previous image">&#8249;</button>
+    <img id="lightbox-img" src="" alt="">
+    <button id="lightbox-next" aria-label="Next image">&#8250;</button>
+    <span id="lightbox-counter"></span>
+  </div>
+
+  <script>
+  (function () {
+    var images = Array.from(document.querySelectorAll('.masonry .gallery-item img'));
+    var lb      = document.getElementById('lightbox');
+    var lbImg   = document.getElementById('lightbox-img');
+    var counter = document.getElementById('lightbox-counter');
+    var current = 0;
+
+    function show(i) {
+      current = (i + images.length) % images.length;
+      lbImg.src = images[current].src;
+      lbImg.alt = images[current].alt;
+      counter.textContent = (current + 1) + ' / ' + images.length;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    images.forEach(function (img, i) {
+      img.parentElement.addEventListener('click', function () { show(i); });
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', close);
+    document.getElementById('lightbox-prev').addEventListener('click', function () { show(current - 1); });
+    document.getElementById('lightbox-next').addEventListener('click', function () { show(current + 1); });
+
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape')     close();
+      if (e.key === 'ArrowLeft')  show(current - 1);
+      if (e.key === 'ArrowRight') show(current + 1);
+    });
+  })();
+  </script>
 </body>
 </html>
 
