@@ -7,7 +7,7 @@
   <meta name="description" content="Custom kitchens, bathrooms and furniture designed and manufactured in East Tāmaki, Auckland. Over 20 years of experience. Call us on +64 21 144 3301.">
   <link rel="canonical" href="https://stirlingkitchens.co.nz/">
   <meta property="og:title" content="Stirling Kitchens — Custom Kitchen Manufacturing, Auckland">
-  <meta property="og:description" content="Custom kitchens, bathrooms and furniture designed and manufactured in East Tāmaki, Auckland. Over 20 years of experience.">
+  <meta property="og:description" content="Auckland's custom kitchen manufacturer for over 20 years. Kitchens, bathroom vanities and bespoke joinery designed and built in our East Tāmaki workshop.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://stirlingkitchens.co.nz/">
   <link rel="stylesheet" href="assets/css/tokens.css">
@@ -20,10 +20,10 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
+        "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
         "@id": "https://stirlingkitchens.co.nz/#business",
         "name": "Stirling Kitchens Ltd",
-        "description": "Custom kitchen manufacturing and design, plus bathrooms and custom furniture including booth and banquette seating. Based in East Tāmaki, Auckland.",
+        "description": "Custom kitchen design and manufacturing for Auckland homeowners. Specialists in kitchen renovations, new builds, custom bathroom vanities and bespoke joinery. Based in East Tāmaki, Auckland. Over 20 years of experience.",
         "url": "https://stirlingkitchens.co.nz",
         "telephone": "+64211443301",
         "email": "admin@stirlingkitchens.co.nz",
@@ -35,7 +35,20 @@
           "postalCode": "2014",
           "addressCountry": "NZ"
         },
-        "areaServed": {"@type": "City", "name": "Auckland"}
+        "areaServed": [
+          {"@type": "City", "name": "Auckland"},
+          {"@type": "AdministrativeArea", "name": "Auckland Region"}
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Custom Kitchen & Joinery Services",
+          "itemListElement": [
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom Kitchen Design and Manufacturing"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Kitchen Renovation Auckland"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom Bathroom Vanities"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom Furniture and Joinery"}}
+          ]
+        }
       },
       {
         "@type": "WebSite",
