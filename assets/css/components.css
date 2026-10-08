@@ -1060,6 +1060,27 @@
   margin-bottom: var(--sp-3);
 }
 
+.footer-social {
+  display: flex;
+  gap: var(--sp-4);
+  margin-top: var(--sp-5);
+}
+.footer-social__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7);
+  transition: background 0.2s, color 0.2s;
+}
+.footer-social__link:hover {
+  background: var(--clr-accent, #3a7d44);
+  color: #fff;
+}
+
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.08);
   margin-top: var(--sp-10);
