@@ -158,7 +158,9 @@
         'Timber (base and visible joinery): ' + (timber ? timber : choose) + '.',
         'Upholstery: ' + (colour ? colour : 'a colour that suits the room') + ' ' + (fabric ? fabric : 'upholstery') + '.',
         'Seat back: ' + (back ? back : choose) + '.',
-        'Storage under the seat: ' + (storage ? storage : 'not shown') + '.',
+        'Base and storage: ' + (storage === 'Floating'
+          ? 'floating base, raised about 150 mm off the floor with open space and the floor visible underneath, optional soft LED strip lighting under the seat'
+          : (storage ? storage : 'choose what best suits the room')) + '.',
         'Table: ' + (table ? (table === 'Keeping my own table' ? 'keep a simple table similar to the existing one' : table + ' table') : choose) + '.',
         'Seating for: ' + (seats ? seats + ' people' : choose) + '.',
         'Overall style: ' + (style ? style.replace('&amp;', '&') : 'match the existing room') + '.',
@@ -198,12 +200,20 @@
       }
     });
 
+    // Clear an error as soon as the person starts fixing that field
+    photoForm.addEventListener('input', function (e) {
+      if (e.target.getAttribute('aria-invalid') === 'true') {
+        e.target.removeAttribute('aria-invalid');
+        errorBox.hidden = true;
+      }
+    });
+
     photoForm.addEventListener('submit', function (e) {
       errorBox.hidden = true;
       var file = photoInput.files && photoInput.files[0];
       var name = photoForm.querySelector('#pf-name');
-      var contact = photoForm.querySelector('#pf-contact');
-      [name, contact].forEach(function (f) { f.removeAttribute('aria-invalid'); });
+      var email = photoForm.querySelector('#pf-email');
+      [name, email].forEach(function (f) { if (f) f.removeAttribute('aria-invalid'); });
 
       if (!file) {
         e.preventDefault();
@@ -222,10 +232,10 @@
         showError('Add your name so Craig knows who to reply to.', name);
         return;
       }
-      if (!contact.value.trim()) {
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
         e.preventDefault();
-        contact.setAttribute('aria-invalid', 'true');
-        showError('Add a phone number or email so Craig can get back to you.', contact);
+        email.setAttribute('aria-invalid', 'true');
+        showError(email.value.trim() ? 'That email address doesn\'t look quite right.' : 'Add your email so we can send you the render.', email);
         return;
       }
       buildRenderPrompt();

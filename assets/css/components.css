@@ -1531,3 +1531,6 @@ img.is-enlargeable:focus-visible { outline: 3px solid var(--clr-green); outline-
 }
 
 .is-app .render-q__num { display: none; }
+
+/* Final step: name, email, phone stacked */
+.render-form__contact { display: grid; gap: var(--sp-4); }

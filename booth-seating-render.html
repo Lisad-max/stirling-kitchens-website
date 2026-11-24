@@ -185,11 +185,12 @@
           </fieldset>
 
           <fieldset class="render-q">
-            <legend><span class="render-q__num">7</span> Storage under the seat?</legend>
+            <legend><span class="render-q__num">7</span> Base &amp; storage</legend>
             <div class="chips">
+              <label class="chip"><input type="radio" name="storage" value="Floating"><span>Floating (raised off the floor)</span></label>
               <label class="chip"><input type="radio" name="storage" value="Drawers"><span>Drawers</span></label>
               <label class="chip"><input type="radio" name="storage" value="Lift-up seat"><span>Lift-up seat</span></label>
-              <label class="chip"><input type="radio" name="storage" value="No storage"><span>No storage</span></label>
+              <label class="chip"><input type="radio" name="storage" value="Solid base, no storage"><span>Solid base, no storage</span></label>
               <label class="chip"><input type="radio" name="storage" value="Not sure" checked><span>Not sure</span></label>
             </div>
           </fieldset>
@@ -242,14 +243,18 @@
 
           <fieldset class="render-q">
             <legend><span class="render-q__num">12</span> Where should we send your render?</legend>
-            <div class="render-form__row">
+            <div class="render-form__contact">
               <div class="form-group">
-                <label for="pf-name">Your name</label>
+                <label for="pf-name">Name</label>
                 <input type="text" id="pf-name" name="name" required autocomplete="name">
               </div>
               <div class="form-group">
-                <label for="pf-contact">Phone or email</label>
-                <input type="text" id="pf-contact" name="contact" required autocomplete="email">
+                <label for="pf-email">Email</label>
+                <input type="email" id="pf-email" name="email" required autocomplete="email" inputmode="email">
+              </div>
+              <div class="form-group">
+                <label for="pf-phone">Phone <span class="optional">(optional)</span></label>
+                <input type="tel" id="pf-phone" name="phone" autocomplete="tel" inputmode="tel">
               </div>
             </div>
           </fieldset>
