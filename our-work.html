@@ -345,42 +345,61 @@
         <div class="section-header">
           <span class="section-label">Our specialty</span>
           <h2 id="booth-heading" class="gallery-section-title">Booth &amp; Banquette Seating</h2>
-          <p>Built-in bench seating with storage, made in our workshop and fitted on site. Photos marked "styled" show our finished build with cushions and soft furnishings added. See more on our <a href="booth-seating.html">booth seating</a> page.</p>
+          <p>Built-in bench seating with storage, made in our workshop and fitted on site. Before and after from three of our jobs: the bench as installed, then finished with cushions. See more on our <a href="booth-seating.html">booth seating</a> page.</p>
         </div>
-        <div class="masonry">
-          <figure class="gallery-item">
-            <img src="Booth%20Seating%20Images/stirling-kitchens-green-l-shaped-bench-seating-storage-styled.jpg"
-                 alt="L-shaped built-in bench seating in deep green with V-groove panelling and lift-up storage seats, styled with cushions and a jute rug"
-                 width="1200" height="900" loading="lazy">
-          </figure>
+        <div class="before-after">
+          <div class="before-after__pair" role="group" aria-label="Green L-shaped bench seating, before and after">
+            <figure class="before-after__item">
+              <img src="Booth%20Seating%20Images/stirling-kitchens-green-l-shaped-bench-seating-storage-2.jpg"
+                   alt="Green L-shaped built-in bench seating with V-groove panelling and lift-up storage seats under black-framed windows, as installed"
+                   width="1200" height="900" loading="lazy">
+              <figcaption class="before-after__tag">Before</figcaption>
+            </figure>
+            <figure class="before-after__item">
+              <img src="Booth%20Seating%20Images/stirling-kitchens-green-l-shaped-bench-seating-storage-with-cushions.jpg"
+                   alt="Green L-shaped built-in bench seating with V-groove panelling, finished with linen seat cushions, scatter cushions and a jute rug"
+                   width="1200" height="900" loading="lazy">
+              <figcaption class="before-after__tag">After</figcaption>
+            </figure>
+          </div>
+          <div class="before-after__pair" role="group" aria-label="Kitchen window seat, before and after">
+            <figure class="before-after__item">
+              <img src="Booth%20Seating%20Images/stirling-kitchens-kitchen-window-seat-storage-drawers.jpg"
+                   alt="White shaker kitchen with oak benchtop and brass cup handles, with a built-in window seat with storage drawers at the end of the run, as installed"
+                   width="1200" height="900" loading="lazy">
+              <figcaption class="before-after__tag">Before</figcaption>
+            </figure>
+            <figure class="before-after__item">
+              <img src="Booth%20Seating%20Images/stirling-kitchens-kitchen-window-seat-storage-drawers-with-cushions.jpg"
+                   alt="White shaker kitchen with a built-in window seat with storage drawers, finished with a seat cushion and scatter cushions"
+                   width="1200" height="900" loading="lazy">
+              <figcaption class="before-after__tag">After</figcaption>
+            </figure>
+          </div>
+          <div class="before-after__pair" role="group" aria-label="Plywood built-in bench, before and after">
+            <figure class="before-after__item">
+              <img src="Booth%20Seating%20Images/stirling-kitchens-plywood-built-in-bench-seat-storage.jpg"
+                   alt="Plywood built-in bench seat with lift-up storage lids and a side storage box, in a plywood-lined room, as installed"
+                   width="1200" height="900" loading="lazy">
+              <figcaption class="before-after__tag">Before</figcaption>
+            </figure>
+            <figure class="before-after__item">
+              <img src="Booth%20Seating%20Images/stirling-kitchens-plywood-built-in-bench-seat-storage-with-cushions.jpg"
+                   alt="Plywood built-in bench seat with storage, finished with linen seat and back cushions, a wool throw and a plant"
+                   width="1200" height="900" loading="lazy">
+              <figcaption class="before-after__tag">After</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="masonry before-after__more">
           <figure class="gallery-item">
             <img src="Booth%20Seating%20Images/stirling-kitchens-green-l-shaped-bench-seating-storage-1.jpg"
                  alt="Green L-shaped built-in bench seating with storage under the seats, V-groove panelled back and a corner side table, beside matching green cabinetry"
                  width="1200" height="900" loading="lazy">
           </figure>
           <figure class="gallery-item">
-            <img src="Booth%20Seating%20Images/stirling-kitchens-kitchen-window-seat-storage-drawers-styled.jpg"
-                 alt="White shaker kitchen with oak benchtop and brass cup handles, with a built-in window seat with storage drawers at the end of the run, styled with cushions"
-                 width="1200" height="900" loading="lazy">
-          </figure>
-          <figure class="gallery-item">
             <img src="Booth%20Seating%20Images/stirling-kitchens-green-l-shaped-bench-seating-storage-3.jpg"
                  alt="Green built-in corner bench seating under black bifold windows, with lift-up storage seats and matching green cabinetry"
-                 width="1200" height="900" loading="lazy">
-          </figure>
-          <figure class="gallery-item">
-            <img src="Booth%20Seating%20Images/stirling-kitchens-plywood-built-in-bench-seat-storage-styled.jpg"
-                 alt="Plywood built-in bench seat with storage, styled with linen seat and back cushions, a wool throw and a plant"
-                 width="1200" height="900" loading="lazy">
-          </figure>
-          <figure class="gallery-item">
-            <img src="Booth%20Seating%20Images/stirling-kitchens-plywood-built-in-bench-seat-storage.jpg"
-                 alt="Plywood built-in bench seat with lift-up storage lids and a side storage box, in a plywood-lined room"
-                 width="1200" height="900" loading="lazy">
-          </figure>
-          <figure class="gallery-item">
-            <img src="Booth%20Seating%20Images/stirling-kitchens-green-l-shaped-bench-seating-storage-2.jpg"
-                 alt="Green L-shaped bench seating with V-groove panelling under a row of black-framed windows"
                  width="1200" height="900" loading="lazy">
           </figure>
         </div>
@@ -497,7 +516,7 @@
 
   <script>
   (function () {
-    var images = Array.from(document.querySelectorAll('.masonry .gallery-item img'));
+    var images = Array.from(document.querySelectorAll('.masonry .gallery-item img, .before-after__item img'));
     var lb      = document.getElementById('lightbox');
     var lbImg   = document.getElementById('lightbox-img');
     var counter = document.getElementById('lightbox-counter');
