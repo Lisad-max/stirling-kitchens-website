@@ -1096,3 +1096,57 @@
   color: rgba(255,255,255,0.40);
   max-width: none;
 }
+
+/* ========================================
+   FAQ ACCORDION (native <details>, keyboard accessible)
+======================================== */
+
+ol.process-steps { list-style: none; padding: 0; margin: 0; }
+.section--light .process-step { background: var(--clr-white); }
+
+.faq-list {
+  max-width: var(--max-w-text);
+  display: grid;
+  gap: var(--sp-3);
+}
+.faq-item {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+}
+.faq-item summary {
+  cursor: pointer;
+  padding: var(--sp-4) var(--sp-5);
+  font-weight: var(--fw-semibold);
+  font-size: var(--text-md);
+  line-height: var(--leading-snug);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  font-size: var(--text-xl);
+  line-height: 1;
+  color: var(--clr-green-dark);
+  flex-shrink: 0;
+}
+.faq-item[open] summary::after { content: "–"; }
+.faq-item summary:focus-visible {
+  outline: 3px solid var(--clr-green-dark);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+}
+.faq-item p {
+  padding: 0 var(--sp-5) var(--sp-5);
+  color: var(--clr-mid);
+}
+
+/* Draft-only marker for content awaiting business confirmation. Remove before launch. */
+.placeholder {
+  background: #fff3c4;
+  color: var(--clr-dark);
+  padding: 0 var(--sp-1);
+}

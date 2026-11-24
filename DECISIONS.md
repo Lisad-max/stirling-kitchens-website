@@ -82,3 +82,12 @@ Gallery items use `aspect-ratio: 4/3` in CSS, which prevents CLS (cumulative lay
 ## `400.html` excluded from sitemap and set to `noindex`
 
 The 404 page has `<meta name="robots" content="noindex">` and is not listed in `sitemap.xml`. Search engines should not index error pages.
+
+## Booth & banquette seating gets its own page (Nov 2026)
+
+**Decision:** Added `booth-seating.html` as a dedicated page targeting booth and banquette seating searches. This reverses the earlier decision to keep booth seating only on Custom Furniture, and adds a fourth service page alongside the three in the original brief.
+
+**Why:** A page focused on a single topic ranks better in Google and AI search than a section on a broader page. The page also carries an FAQ (with FAQPage structured data) that answers common customer questions directly.
+
+**Trade-offs:** Custom Furniture still has a booth seating section; it now links to the new page. Its booth content should be trimmed over time so the two pages don't compete for the same searches. The new page is linked from the footer on every page but not added to the main navigation, which keeps the menu to six items.
+
