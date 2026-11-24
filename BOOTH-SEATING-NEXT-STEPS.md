@@ -1,28 +1,27 @@
 # Booth & Banquette Seating page — where it's up to
 
-**Branch:** `draft/booth-seating-page` (not live yet — `master` is what Netlify publishes)
+**Status (25 Nov 2026): LIVE** at https://www.stirlingkitchens.co.nz/booth-seating.html
 
-## Done
-- New page `booth-seating.html` targeting booth seating / banquette seating searches in Auckland
-  (keyword research summary is in `SEO-GUIDE.md` under "Booth & Banquette Seating")
-- FAQ section with FAQPage structured data, Service + BreadcrumbList structured data
-- Footer link to the page on every page (top menu left unchanged on purpose)
-- Custom Furniture page's booth section now links to the new page
-- Added to `sitemap.xml`; decision logged in `DECISIONS.md`
-- FAQ accordion styles added to `assets/css/components.css`
+For the full picture (section order, owner decisions, image workflow, how to publish), see **`PROJECT-STATUS.md`**.
 
-## Filled in (24 Nov 2026)
-- **Price:** "starts from $9,000", in both the visible FAQ and the JSON-LD `FAQPage` block
-- **Lead time:** "4 to 6 weeks from design sign-off to installation (conditions apply)", in both places
-- `.placeholder` style removed from `components.css` (no placeholders left on the page)
+## Done and published
+- `booth-seating.html` targeting booth / banquette seating searches (keyword summary in `SEO-GUIDE.md`)
+- FAQ with FAQPage, Service and BreadcrumbList structured data
+- Price "starts from $9,000"; lead time "4 to 6 weeks from design sign-off to installation (conditions apply)" — in both the visible FAQ and the JSON-LD
+- 8 layout cards with inspiration images (small "Inspiration image" label, no photo titles)
+- "Built by us, styled for living": 3 real jobs as As built / Styled pairs
+- Real job 3D measure → CAD → finished strip; Meet Craig; storage-drawers image; ideas gallery
+- Hover zoom and click-to-enlarge images
+- Footer link on every page, sitemap entry, link from Custom Furniture
+- Site-wide www canonical/sitemap fix
+- Our Work gallery: "Booth & Banquette Seating" section with 7 real-job photos
 
-## Still needed before publishing
-1. Confirm whether the $9,000 starting price includes GST and installation, and adjust the wording if needed
-2. Confirm the general dimensions in the FAQ (seat ~450 mm high, 450–500 mm deep, ~1.5 m per wall for a corner nook)
-3. Confirm the FAQ statements about existing kitchens, under-seat storage, matching cabinetry finishes and measuring on site
-4. Swap the three inspiration images for real Stirling Kitchens booth photos when available (can happen after launch)
-5. Merge this branch into `master` only when the owner says "publish it"
+## Still open
+1. Confirm whether $9,000 includes GST and installation, and adjust the wording if so
+2. Confirm the FAQ dimensions (seat ~450 mm high, 450–500 mm deep, ~1.5 m per wall)
+3. Owner to submit the sitemap / request indexing in Google Search Console
+4. Add more real Stirling booth photos as they come in (they can replace inspiration images over time)
 
 ## Notes
 - "Banquette" is the correct spelling; "banquet seating" is mentioned once only, on purpose.
-- Site phone number is 09 279 8984 everywhere (the old +64 21 number in `SEO-GUIDE.md` for other pages is out of date).
+- Site phone number is 09 279 8984 everywhere (Craig's mobile 021 144 3301 appears on Contact, labelled).

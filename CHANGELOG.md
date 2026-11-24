@@ -1,5 +1,20 @@
 # Changelog
 
+## v1.1 — Booth & banquette seating (24–25 November 2026)
+
+All published to the live site. Details and owner decisions: `PROJECT-STATUS.md`.
+
+### New
+- `booth-seating.html` — booth & banquette seating page: 8 layout cards (inspiration images), real jobs shown As built / Styled, 3D measure → CAD → finished job strip, Meet Craig, FAQ with structured data, hover zoom and click-to-enlarge images (`assets/js/image-viewer.js`)
+- `booth-seating-render.html` + `/corner` short link — "send us your corner" render enquiry app (built in a separate session, PR #1)
+- Our Work: "Booth & Banquette Seating" section with 7 real-job photos
+- Footer link to the booth page on every page; booth page added to `sitemap.xml`
+
+### Changed
+- Site-wide: canonicals, social previews, structured data, sitemap and robots.txt now use `https://www.stirlingkitchens.co.nz`
+- About: Craig's experience is 30 years
+- Call buttons on computers show and copy the number (separate session)
+
 ## v1.0 — Initial build (August 2025)
 
 Initial website build for Stirling Kitchens Ltd.
