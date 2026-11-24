@@ -8,7 +8,7 @@ Per-page SEO details: canonical URL, title tag, meta description, H1, structured
 
 | Element | Value |
 |---------|-------|
-| **Canonical** | `https://stirlingkitchens.co.nz/` |
+| **Canonical** | `https://www.stirlingkitchens.co.nz/` |
 | **Title** | Stirling Kitchens — Custom Kitchen Manufacturing, Auckland |
 | **Meta description** | Custom kitchens, bathrooms and furniture made to measure in East Tāmaki, Auckland. 25 years' experience. Call +64 21 144 3301. |
 | **H1** | Built for the way you actually live |
@@ -21,7 +21,7 @@ Per-page SEO details: canonical URL, title tag, meta description, H1, structured
 
 | Element | Value |
 |---------|-------|
-| **Canonical** | `https://stirlingkitchens.co.nz/custom-kitchens.html` |
+| **Canonical** | `https://www.stirlingkitchens.co.nz/custom-kitchens.html` |
 | **Title** | Custom Kitchens Auckland \| Stirling Kitchens |
 | **Meta description** | Bespoke kitchen design and manufacturing from East Tāmaki, Auckland. Every kitchen is built to your brief, your space and your style. Call +64 21 144 3301. |
 | **H1** | Custom Kitchens, Built to Measure |
@@ -34,7 +34,7 @@ Per-page SEO details: canonical URL, title tag, meta description, H1, structured
 
 | Element | Value |
 |---------|-------|
-| **Canonical** | `https://stirlingkitchens.co.nz/custom-bathrooms.html` |
+| **Canonical** | `https://www.stirlingkitchens.co.nz/custom-bathrooms.html` |
 | **Title** | Custom Bathroom Vanities Auckland \| Stirling Kitchens |
 | **Meta description** | Custom-made bathroom vanities and cabinetry from East Tāmaki, Auckland. Built to your dimensions — not whatever happens to come in a standard box. Call +64 21 144 3301. |
 | **H1** | Custom Bathroom Vanities & Cabinetry |
@@ -47,7 +47,7 @@ Per-page SEO details: canonical URL, title tag, meta description, H1, structured
 
 | Element | Value |
 |---------|-------|
-| **Canonical** | `https://stirlingkitchens.co.nz/custom-furniture.html` |
+| **Canonical** | `https://www.stirlingkitchens.co.nz/custom-furniture.html` |
 | **Title** | Custom Furniture & Booth Seating Auckland \| Stirling Kitchens |
 | **Meta description** | Custom booth seating, banquette seating and built-in furniture from East Tāmaki, Auckland. Specialists in curved, L-shaped and integrated kitchen booth seating. |
 | **H1** | Custom Furniture & Booth Seating |
@@ -60,7 +60,7 @@ Per-page SEO details: canonical URL, title tag, meta description, H1, structured
 
 | Element | Value |
 |---------|-------|
-| **Canonical** | `https://stirlingkitchens.co.nz/booth-seating.html` |
+| **Canonical** | `https://www.stirlingkitchens.co.nz/booth-seating.html` |
 | **Title** | Booth & Banquette Seating Auckland \| Custom Kitchen Nooks \| Stirling Kitchens |
 | **Meta description** | Custom booth and banquette seating built in Auckland for homes across Auckland and beyond. Built-in breakfast nooks, corner and L-shaped banquettes, curved booths and window seats. Call 09 279 8984. |
 | **H1** | Custom Booth & Banquette Seating, Built to Fit Your Kitchen |
@@ -76,7 +76,7 @@ Per-page SEO details: canonical URL, title tag, meta description, H1, structured
 
 | Element | Value |
 |---------|-------|
-| **Canonical** | `https://stirlingkitchens.co.nz/our-work.html` |
+| **Canonical** | `https://www.stirlingkitchens.co.nz/our-work.html` |
 | **Title** | Our Work \| Stirling Kitchens |
 | **Meta description** | Style and inspiration gallery from Stirling Kitchens — custom kitchens, bathrooms and booth seating. Based in East Tāmaki, Auckland. Call +64 21 144 3301. |
 | **H1** | Our Work |
@@ -88,7 +88,7 @@ Per-page SEO details: canonical URL, title tag, meta description, H1, structured
 
 | Element | Value |
 |---------|-------|
-| **Canonical** | `https://stirlingkitchens.co.nz/about.html` |
+| **Canonical** | `https://www.stirlingkitchens.co.nz/about.html` |
 | **Title** | About Us \| Stirling Kitchens |
 | **Meta description** | Meet the Stirling Kitchens team — Craig, Stacy, Wayne and Phil. Over 25 years in kitchen design and manufacturing from our East Tāmaki, Auckland workshop. |
 | **H1** | About Stirling Kitchens |
@@ -100,7 +100,7 @@ Per-page SEO details: canonical URL, title tag, meta description, H1, structured
 
 | Element | Value |
 |---------|-------|
-| **Canonical** | `https://stirlingkitchens.co.nz/contact.html` |
+| **Canonical** | `https://www.stirlingkitchens.co.nz/contact.html` |
 | **Title** | Contact Us \| Stirling Kitchens |
 | **Meta description** | Get in touch with Stirling Kitchens. Call Craig on +64 21 144 3301, email admin@stirlingkitchens.co.nz, or send an enquiry. Based in East Tāmaki, Auckland. |
 | **H1** | Get in Touch |
@@ -120,7 +120,7 @@ The 404 page has `<meta name="robots" content="noindex">` so it won't be indexed
 If the domain changes from `stirlingkitchens.co.nz`, do a find and replace across all HTML files.
 
 ### Submitting the sitemap
-After deploying, submit `https://stirlingkitchens.co.nz/sitemap.xml` to Google Search Console.
+After deploying, submit `https://www.stirlingkitchens.co.nz/sitemap.xml` to Google Search Console.
 
 ### Internal linking
 Key internal links in place:
