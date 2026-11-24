@@ -151,7 +151,7 @@
         <p>If the kitchen is the heart of the home, the dining table is where it gets fed. Comfortable seating makes the good conversations last longer.</p>
         <div class="hero-ctas" style="margin-top: 1.5rem;">
           <a href="tel:+6492798984" class="btn btn-primary btn-lg">Call 09 279 8984</a>
-          <a href="#send-a-photo" class="btn btn-ghost btn-lg">Send a Photo of Your Corner</a>
+          <a href="booth-seating-render.html" class="btn btn-ghost btn-lg">See It In Your Corner</a>
         </div>
       </div>
     </section>
@@ -354,7 +354,7 @@
         <ol class="process-steps">
           <li class="process-step">
             <h3>Talk to us</h3>
-            <p>Call, or <a href="#send-a-photo">send a photo of the space</a> and we'll send back a render of booth seating in it.</p>
+            <p>Call, or <a href="booth-seating-render.html">send a photo of the space</a> and we'll send back a render of booth seating in it.</p>
           </li>
           <li class="process-step">
             <h3>Measure &amp; design</h3>
@@ -509,52 +509,15 @@
       </div>
     </section>
 
-    <!-- Photo enquiry: the main enquiry on this page -->
-    <section class="cta-block photo-enquiry" id="send-a-photo" aria-labelledby="cta-heading">
+    <!-- Render offer: links to the full enquiry page -->
+    <section class="cta-block" id="send-a-photo" aria-labelledby="cta-heading">
       <div class="container">
-        <h2 id="cta-heading">Send us a photo of your corner. We'll show you the booth.</h2>
-        <p>We'll send you back a render of booth seating in your space, so you can see it before you decide. No cost, no obligation.</p>
-
-        <form name="booth-photo" method="POST" action="thank-you.html" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" class="photo-form" novalidate>
-          <input type="hidden" name="form-name" value="booth-photo">
-          <p hidden><label>Don't fill this in: <input name="bot-field" tabindex="-1"></label></p>
-
-          <input type="file" id="corner-photo" name="photo" accept="image/*" required class="photo-input">
-          <label class="photo-drop" for="corner-photo">
-            <img class="photo-drop__preview" alt="" hidden>
-            <span class="photo-drop__icon"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
-            <span class="photo-drop__text">Add a photo of your corner</span>
-            <span class="photo-drop__hint">Take one now, or choose one you already have</span>
-          </label>
-
-          <fieldset class="layout-picker">
-            <legend>What are you picturing? <span class="optional">(optional)</span></legend>
-            <div class="layout-chips">
-              <label class="layout-chip"><input type="radio" name="layout" value="L-Shaped"><span>L-Shaped</span></label>
-              <label class="layout-chip"><input type="radio" name="layout" value="U-Shaped"><span>U-Shaped</span></label>
-              <label class="layout-chip"><input type="radio" name="layout" value="Curved"><span>Curved</span></label>
-              <label class="layout-chip"><input type="radio" name="layout" value="Straight Bench"><span>Straight Bench</span></label>
-              <label class="layout-chip"><input type="radio" name="layout" value="Window Seat"><span>Window Seat</span></label>
-              <label class="layout-chip"><input type="radio" name="layout" value="Island"><span>Island</span></label>
-              <label class="layout-chip"><input type="radio" name="layout" value="Not sure" checked><span>Not sure</span></label>
-            </div>
-          </fieldset>
-
-          <div class="photo-form__row">
-            <div class="form-group">
-              <label for="pf-name">Your name</label>
-              <input type="text" id="pf-name" name="name" required autocomplete="name">
-            </div>
-            <div class="form-group">
-              <label for="pf-contact">Phone or email</label>
-              <input type="text" id="pf-contact" name="contact" required autocomplete="email">
-            </div>
-          </div>
-
-          <p class="photo-form__error" role="alert" hidden></p>
-          <button type="submit" class="btn btn-primary btn-lg photo-form__submit">Send my photo</button>
-          <p class="photo-form__note">Rather talk? Call <a href="tel:+6492798984">09 279 8984</a>.</p>
-        </form>
+        <h2 id="cta-heading">Got a corner you'd love to turn into a cosy booth?</h2>
+        <p>Send us a photo of it, pick a layout and colours, and we'll send back a render of booth seating in your space. No cost, no obligation.</p>
+        <div class="cta-block__actions">
+          <a href="booth-seating-render.html" class="btn btn-primary btn-lg">Send Us Your Corner</a>
+          <a href="tel:+6492798984" class="btn btn-ghost btn-lg">Call 09 279 8984</a>
+        </div>
       </div>
     </section>
 

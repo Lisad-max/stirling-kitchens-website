@@ -1374,3 +1374,105 @@ img.is-enlargeable:focus-visible { outline: 3px solid var(--clr-green); outline-
   color: rgba(255,255,255,0.72);
 }
 .photo-enquiry .photo-form__note a { color: var(--clr-white); }
+
+/* ========================================
+   RENDER ENQUIRY PAGE (booth-seating-render.html)
+   Light-background version of the photo form, with tap-to-choose chips.
+======================================== */
+
+.render-form {
+  max-width: 680px;
+  margin: 0 auto;
+  display: grid;
+  gap: var(--sp-8);
+}
+.render-q { border: 0; padding: 0; margin: 0; display: grid; gap: var(--sp-3); }
+.render-q legend {
+  font-size: var(--text-lg);
+  font-weight: var(--fw-bold);
+  color: var(--clr-dark);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.render-q__num {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem; height: 2rem;
+  border-radius: 50%;
+  background: var(--clr-green-tint);
+  color: var(--clr-green-dark);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-bold);
+  flex-shrink: 0;
+}
+.render-q__hint { margin: 0; color: var(--clr-mid); font-size: var(--text-sm); }
+.render-form__optional-note {
+  margin: 0;
+  padding: var(--sp-4) var(--sp-5);
+  background: var(--clr-light);
+  border-left: 4px solid var(--clr-green);
+  border-radius: var(--radius-md);
+  color: var(--clr-mid);
+}
+.render-form .optional { font-weight: var(--fw-regular); color: var(--clr-muted); }
+.render-form__row { display: grid; gap: var(--sp-4); }
+@media (min-width: 560px) { .render-form__row { grid-template-columns: 1fr 1fr; } }
+.render-form .form-group { margin: 0; }
+.render-form__note { margin: 0; text-align: center; font-size: var(--text-sm); color: var(--clr-mid); }
+
+/* Photo drop zone on a light background */
+.render-form .photo-drop {
+  border-color: var(--clr-border);
+  background: var(--clr-light);
+  color: var(--clr-dark);
+  min-height: 240px;
+}
+.render-form .photo-drop:hover { border-color: var(--clr-green-dark); background: var(--clr-green-tint); }
+.render-form .photo-drop__icon { color: var(--clr-green-dark); }
+.render-form .photo-drop__hint { color: var(--clr-mid); }
+.render-form .photo-drop.has-photo { border-color: var(--clr-green-dark); }
+.render-form .photo-input:focus-visible + .photo-drop { outline-color: var(--clr-green-dark); }
+.render-form .photo-form__error {
+  margin: 0;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius-md);
+  background: #fdecea;
+  color: #8a1c13;
+  font-size: var(--text-sm);
+}
+
+/* Tap-to-choose chips */
+.chips { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.chip span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 44px;
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--clr-border);
+  border-radius: 999px;
+  background: var(--clr-white);
+  color: var(--clr-dark);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.chip span:hover { border-color: var(--clr-green-dark); }
+.chip input:checked + span {
+  background: var(--clr-navy);
+  border-color: var(--clr-navy);
+  color: var(--clr-white);
+  font-weight: var(--fw-semibold);
+}
+.chip input:focus-visible + span { outline: 3px solid var(--clr-green-dark); outline-offset: 2px; }
+.swatch {
+  width: 1.25rem; height: 1.25rem;
+  border-radius: 50%;
+  background: var(--sw);
+  border: 1px solid rgba(0,0,0,0.15);
+  flex-shrink: 0;
+}
+.chip input:checked + span .swatch { border-color: rgba(255,255,255,0.8); box-shadow: 0 0 0 2px var(--clr-navy), 0 0 0 3px var(--clr-white); }

@@ -94,7 +94,7 @@
      - Shrinks very large photos so they fit Netlify's 8 MB upload limit
      - Plain-language checks before sending
   ----------------------------------------- */
-  var photoForm = document.querySelector('.photo-form');
+  var photoForm = document.querySelector('.photo-form, .render-form');
   if (photoForm) {
     var photoInput = photoForm.querySelector('.photo-input');
     var drop = photoForm.querySelector('.photo-drop');
@@ -127,6 +127,46 @@
           }, 'image/jpeg', 0.85);
         }).catch(function () { resolve(null); });
       });
+    };
+
+    var submitLabel = photoForm.querySelector('.photo-form__submit').textContent;
+
+    // Turns the customer's answers into a ready-to-paste image prompt (ChatGPT etc.).
+    // It's sent with the enquiry in a hidden field called "render-prompt".
+    var buildRenderPrompt = function () {
+      var promptField = photoForm.querySelector('input[name="render-prompt"]');
+      if (!promptField) return;
+      var pick = function (name) {
+        var el = photoForm.querySelector('input[name="' + name + '"]:checked');
+        var v = el ? el.value : 'Not sure';
+        return v === 'Not sure' ? null : v;
+      };
+      var text = function (id) {
+        var el = photoForm.querySelector('#' + id);
+        return el && el.value.trim() ? el.value.trim() : null;
+      };
+      var choose = 'choose what best suits the room';
+      var layout = pick('layout'), timber = pick('timber'), colour = pick('upholstery_colour'),
+          fabric = pick('upholstery_type'), back = pick('back_style'), storage = pick('storage'),
+          table = pick('table'), seats = pick('seats'), style = pick('style'),
+          size = text('rf-size'), notes = text('rf-notes');
+
+      var lines = [
+        'Photorealistic interior render. Using the attached photo of the customer\'s room, add custom built-in booth (banquette) seating into the corner or nook shown.',
+        'Keep the existing walls, windows, flooring, ceiling, lighting and camera angle exactly as in the photo. Only add the seating, table and cushions.',
+        'Layout: ' + (layout ? layout + ' booth seating' : choose) + '.',
+        'Timber (base and visible joinery): ' + (timber ? timber : choose) + '.',
+        'Upholstery: ' + (colour ? colour : 'a colour that suits the room') + ' ' + (fabric ? fabric : 'upholstery') + '.',
+        'Seat back: ' + (back ? back : choose) + '.',
+        'Storage under the seat: ' + (storage ? storage : 'not shown') + '.',
+        'Table: ' + (table ? (table === 'Keeping my own table' ? 'keep a simple table similar to the existing one' : table + ' table') : choose) + '.',
+        'Seating for: ' + (seats ? seats + ' people' : choose) + '.',
+        'Overall style: ' + (style ? style.replace('&amp;', '&') : 'match the existing room') + '.',
+        size ? 'Approximate size of the space: ' + size + '.' : null,
+        notes ? 'Customer notes: ' + notes : null,
+        'Realistic proportions: seat height about 450 mm, seat depth 450–500 mm, table height about 750 mm. Natural daylight, high-end New Zealand home, warm and inviting.'
+      ];
+      promptField.value = lines.filter(Boolean).join('\n');
     };
 
     photoInput.addEventListener('change', function () {
@@ -188,6 +228,7 @@
         showError('Add a phone number or email so Craig can get back to you.', contact);
         return;
       }
+      buildRenderPrompt();
       var btn = photoForm.querySelector('.photo-form__submit');
       btn.textContent = 'Sending…';
       btn.disabled = true;
@@ -196,7 +237,7 @@
     // If someone comes back with the browser's Back button, reset the button
     window.addEventListener('pageshow', function () {
       var btn = photoForm.querySelector('.photo-form__submit');
-      btn.textContent = 'Send my photo';
+      btn.textContent = submitLabel;
       btn.disabled = false;
     });
   }

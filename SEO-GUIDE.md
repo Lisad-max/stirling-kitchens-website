@@ -72,6 +72,20 @@ Per-page SEO details: canonical URL, title tag, meta description, H1, structured
 
 ---
 
+## See It In Your Space (render enquiry) — `booth-seating-render.html`
+
+| Element | Value |
+|---------|-------|
+| **Canonical** | `https://www.stirlingkitchens.co.nz/booth-seating-render.html` |
+| **Title** | Free Booth Seating Render of Your Corner \| Stirling Kitchens |
+| **H1** | Got a corner you'd love to turn into a cosy booth? |
+| **Purpose** | Main booth seating enquiry: customer sends a photo plus optional layout, timber, upholstery and style choices; Stirling Kitchens replies with a render |
+| **Form** | Netlify form `booth-render` (file upload). Includes hidden field `render-prompt`, auto-written from the answers, ready to paste into ChatGPT with the photo |
+| **Structured data** | LocalBusiness + BreadcrumbList |
+| **Internal links** | From Booth & Banquette Seating (hero button, "Talk to us" step, final call to action) |
+
+---
+
 ## Our Work — `our-work.html`
 
 | Element | Value |
