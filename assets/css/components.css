@@ -1143,10 +1143,3 @@ ol.process-steps { list-style: none; padding: 0; margin: 0; }
   padding: 0 var(--sp-5) var(--sp-5);
   color: var(--clr-mid);
 }
-
-/* Draft-only marker for content awaiting business confirmation. Remove before launch. */
-.placeholder {
-  background: #fff3c4;
-  color: var(--clr-dark);
-  padding: 0 var(--sp-1);
-}

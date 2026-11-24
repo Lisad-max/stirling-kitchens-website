@@ -11,13 +11,17 @@
 - Added to `sitemap.xml`; decision logged in `DECISIONS.md`
 - FAQ accordion styles added to `assets/css/components.css`
 
+## Filled in (24 Nov 2026)
+- **Price:** "starts from $8,000", in both the visible FAQ and the JSON-LD `FAQPage` block
+- **Lead time:** "4 to 6 weeks from design sign-off to installation (conditions apply)", in both places
+- `.placeholder` style removed from `components.css` (no placeholders left on the page)
+
 ## Still needed before publishing
-1. **Price range** — replace the yellow placeholder in the FAQ "How much does custom banquette seating cost in Auckland?"
-2. **Lead time** — replace the placeholder in the FAQ "How long does it take to build custom booth seating?"
-3. Update the same two answers in the JSON-LD `FAQPage` block at the top of `booth-seating.html` (search for `PLACEHOLDER`)
-4. Confirm the general dimensions in the FAQ (seat ~450 mm high, 450–500 mm deep, ~1.5 m per wall for a corner nook)
-5. Swap the three inspiration images for real Stirling Kitchens booth photos when available
-6. Once placeholders are gone, remove the `.placeholder` style at the end of `components.css` and merge this branch into `master`
+1. Confirm whether the $8,000 starting price includes GST and installation, and adjust the wording if needed
+2. Confirm the general dimensions in the FAQ (seat ~450 mm high, 450–500 mm deep, ~1.5 m per wall for a corner nook)
+3. Confirm the FAQ statements about existing kitchens, under-seat storage, matching cabinetry finishes and measuring on site
+4. Swap the three inspiration images for real Stirling Kitchens booth photos when available (can happen after launch)
+5. Merge this branch into `master` only when the owner says "publish it"
 
 ## Notes
 - "Banquette" is the correct spelling; "banquet seating" is mentioned once only, on purpose.

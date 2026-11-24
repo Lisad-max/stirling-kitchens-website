@@ -68,7 +68,7 @@ Per-page SEO details: canonical URL, title tag, meta description, H1, structured
 | **Target keywords** | booth seating Auckland, banquette seating Auckland, custom booth seating, built-in banquette |
 | **Secondary keywords** | breakfast nook, dining nook, kitchen nook bench seat, kitchen booth, corner bench seating, L-shaped / U-shaped / curved banquette, window seat, booth seating with storage, upholstered banquette, "banquet seating" (misspelling — mentioned once only) |
 | **Internal links** | From: footer on every page, Custom Furniture booth section. To: Custom Kitchens, Custom Furniture, Contact |
-| **Before launch** | Replace the two FAQ placeholders (price range, lead time) in BOTH the visible FAQ and the JSON-LD; confirm seat/space dimensions |
+| **Before launch** | FAQ price (from $8,000) and lead time (4–6 weeks) filled in on 24 Nov 2026. If either changes, update BOTH the visible FAQ and the JSON-LD so they match. Still to confirm: seat/space dimensions |
 
 ---
 
