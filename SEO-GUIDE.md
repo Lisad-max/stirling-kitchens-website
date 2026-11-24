@@ -56,6 +56,22 @@ Per-page SEO details: canonical URL, title tag, meta description, H1, structured
 
 ---
 
+## Booth & Banquette Seating — `booth-seating.html`
+
+| Element | Value |
+|---------|-------|
+| **Canonical** | `https://stirlingkitchens.co.nz/booth-seating.html` |
+| **Title** | Booth & Banquette Seating Auckland \| Custom Kitchen Nooks \| Stirling Kitchens |
+| **Meta description** | Custom booth and banquette seating built in Auckland for homes across Auckland and beyond. Built-in breakfast nooks, corner and L-shaped banquettes, curved booths and window seats. Call 09 279 8984. |
+| **H1** | Custom Booth & Banquette Seating, Built to Fit Your Kitchen |
+| **Structured data** | LocalBusiness + Service (with alternate names) + BreadcrumbList + FAQPage |
+| **Target keywords** | booth seating Auckland, banquette seating Auckland, custom booth seating, built-in banquette |
+| **Secondary keywords** | breakfast nook, dining nook, kitchen nook bench seat, kitchen booth, corner bench seating, L-shaped / U-shaped / curved banquette, window seat, booth seating with storage, upholstered banquette, "banquet seating" (misspelling — mentioned once only) |
+| **Internal links** | From: footer on every page, Custom Furniture booth section. To: Custom Kitchens, Custom Furniture, Contact |
+| **Before launch** | FAQ price (from $9,000) and lead time (4–6 weeks) filled in on 24 Nov 2026. If either changes, update BOTH the visible FAQ and the JSON-LD so they match. Still to confirm: seat/space dimensions |
+
+---
+
 ## Our Work — `our-work.html`
 
 | Element | Value |
