@@ -1197,3 +1197,18 @@ ol.process-steps { list-style: none; padding: 0; margin: 0; }
 .layout-card__body { padding: var(--sp-5) var(--sp-6) var(--sp-6); }
 .layout-card__body h3 { font-size: var(--text-lg); margin-bottom: var(--sp-2); }
 .layout-card__body p { font-size: var(--text-sm); color: var(--clr-mid); max-width: none; }
+
+/* Booth seating: picture beside the built-in vs off-the-shelf points */
+.why-layout { display: grid; gap: var(--sp-8); align-items: center; }
+.why-layout__image {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.why-layout__image img { width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 1024px) {
+  .why-layout { grid-template-columns: 1fr 1fr; }
+  .why-layout .booth-features { grid-template-columns: 1fr; }
+}
