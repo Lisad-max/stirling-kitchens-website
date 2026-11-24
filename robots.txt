@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /404.html
 
-Sitemap: https://stirlingkitchens.co.nz/sitemap.xml
+Sitemap: https://www.stirlingkitchens.co.nz/sitemap.xml
