@@ -15,7 +15,8 @@ These decisions were made specifically for Stirling Kitchens and override/narrow
 - **Primary CTA across the whole site is "Call the business"** (click-to-call phone number), with a contact/enquiry form as the secondary, lower-commitment action.
 - **Brand colours** should be sampled from the two supplied logo files (green/black/navy) and built into a cohesive palette — do not introduce an unrelated colour scheme.
 - **New Zealand English** throughout all copy.
-- **Image captions are the layout name only** — e.g. "U-Shaped Booth Seating", "L-Shaped Banquette Seating", "Bay Window Seat". No descriptions of colours, materials or finishes, and no extra wording. Where images are inspiration-only, say so once in the section intro text, not in each caption.
+- **Image captions are the layout name only** — e.g. "U-Shaped Booth Seating", "L-Shaped Banquette Seating", "Bay Window Seat". No descriptions of colours, materials or finishes, and no extra wording.
+- **Booth seating layout cards (owner's decision, 25 Nov 2026):** no title/caption on the photos — the card heading below already names the layout. Each photo instead carries a small, low-contrast "Inspiration image" label in the bottom-right corner (`.layout-card__ref`), so it's clear these aren't Stirling builds. Keep that label on every inspiration photo in that section; don't move it back to the section intro.
 
 ---
 
