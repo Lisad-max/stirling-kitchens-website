@@ -89,6 +89,119 @@
   }
 
   /* -----------------------------------------
+     Photo enquiry (booth seating page)
+     - Shows the chosen photo so people know it worked
+     - Shrinks very large photos so they fit Netlify's 8 MB upload limit
+     - Plain-language checks before sending
+  ----------------------------------------- */
+  var photoForm = document.querySelector('.photo-form');
+  if (photoForm) {
+    var photoInput = photoForm.querySelector('.photo-input');
+    var drop = photoForm.querySelector('.photo-drop');
+    var preview = photoForm.querySelector('.photo-drop__preview');
+    var dropText = photoForm.querySelector('.photo-drop__text');
+    var dropHint = photoForm.querySelector('.photo-drop__hint');
+    var errorBox = photoForm.querySelector('.photo-form__error');
+    var MAX_BYTES = 7.5 * 1024 * 1024;
+
+    var showError = function (msg, field) {
+      errorBox.textContent = msg;
+      errorBox.hidden = false;
+      if (field) field.focus();
+    };
+
+    var shrinkPhoto = function (file) {
+      // Resize to max 2400px wide/high as a JPEG. Resolves with a File, or null if not possible.
+      return new Promise(function (resolve) {
+        if (!window.createImageBitmap || !window.DataTransfer) { resolve(null); return; }
+        createImageBitmap(file).then(function (bmp) {
+          var scale = Math.min(1, 2400 / Math.max(bmp.width, bmp.height));
+          var canvas = document.createElement('canvas');
+          canvas.width = Math.round(bmp.width * scale);
+          canvas.height = Math.round(bmp.height * scale);
+          canvas.getContext('2d').drawImage(bmp, 0, 0, canvas.width, canvas.height);
+          canvas.toBlob(function (blob) {
+            if (!blob || blob.size > MAX_BYTES) { resolve(null); return; }
+            var name = file.name.replace(/\.[^.]+$/, '') + '.jpg';
+            resolve(new File([blob], name, { type: 'image/jpeg' }));
+          }, 'image/jpeg', 0.85);
+        }).catch(function () { resolve(null); });
+      });
+    };
+
+    photoInput.addEventListener('change', function () {
+      errorBox.hidden = true;
+      drop.classList.remove('is-invalid');
+      var file = photoInput.files && photoInput.files[0];
+      if (!file) return;
+
+      preview.hidden = false;
+      preview.src = URL.createObjectURL(file);
+      preview.onerror = function () { preview.hidden = true; }; // e.g. HEIC on some desktop browsers
+      drop.classList.add('has-photo');
+      dropText.textContent = 'Photo added';
+      dropHint.textContent = 'Tap to change it';
+
+      if (file.size > MAX_BYTES) {
+        dropHint.textContent = 'Making the photo smaller so it sends…';
+        shrinkPhoto(file).then(function (small) {
+          if (small) {
+            var dt = new DataTransfer();
+            dt.items.add(small);
+            photoInput.files = dt.files;
+            dropHint.textContent = 'Tap to change it';
+          } else {
+            dropHint.textContent = 'Tap to change it';
+            showError('That photo is too big to send. Try a screenshot of it, or email it to admin@stirlingkitchens.co.nz.');
+          }
+        });
+      }
+    });
+
+    photoForm.addEventListener('submit', function (e) {
+      errorBox.hidden = true;
+      var file = photoInput.files && photoInput.files[0];
+      var name = photoForm.querySelector('#pf-name');
+      var contact = photoForm.querySelector('#pf-contact');
+      [name, contact].forEach(function (f) { f.removeAttribute('aria-invalid'); });
+
+      if (!file) {
+        e.preventDefault();
+        drop.classList.add('is-invalid');
+        showError('Add a photo of your corner first.', photoInput);
+        return;
+      }
+      if (file.size > MAX_BYTES) {
+        e.preventDefault();
+        showError('That photo is too big to send. Try a screenshot of it, or email it to admin@stirlingkitchens.co.nz.');
+        return;
+      }
+      if (!name.value.trim()) {
+        e.preventDefault();
+        name.setAttribute('aria-invalid', 'true');
+        showError('Add your name so Craig knows who to reply to.', name);
+        return;
+      }
+      if (!contact.value.trim()) {
+        e.preventDefault();
+        contact.setAttribute('aria-invalid', 'true');
+        showError('Add a phone number or email so Craig can get back to you.', contact);
+        return;
+      }
+      var btn = photoForm.querySelector('.photo-form__submit');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+    });
+
+    // If someone comes back with the browser's Back button, reset the button
+    window.addEventListener('pageshow', function () {
+      var btn = photoForm.querySelector('.photo-form__submit');
+      btn.textContent = 'Send my photo';
+      btn.disabled = false;
+    });
+  }
+
+  /* -----------------------------------------
      Call buttons on computers
      A tel: link can't dial from a desktop browser — it just asks to open
      an app (FaceTime, Teams, Skype). On mouse-based devices, clicking a
