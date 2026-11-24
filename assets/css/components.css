@@ -1569,3 +1569,17 @@ img.is-enlargeable:focus-visible { outline: 3px solid var(--clr-green); outline-
   font-weight: var(--fw-semibold);
   max-width: none;
 }
+
+/* Layout cards: quiet note that the photo is an inspiration image, not our build */
+.layout-card__ref {
+  position: absolute;
+  right: var(--sp-2);
+  bottom: var(--sp-2);
+  padding: 1px var(--sp-2);
+  border-radius: var(--radius-md);
+  background: rgba(13, 28, 46, 0.45);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
