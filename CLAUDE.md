@@ -15,7 +15,7 @@ These decisions were made specifically for Stirling Kitchens and override/narrow
 - **Primary CTA across the whole site is "Call the business"** (click-to-call phone number), with a contact/enquiry form as the secondary, lower-commitment action.
 - **Brand colours** should be sampled from the two supplied logo files (green/black/navy) and built into a cohesive palette — do not introduce an unrelated colour scheme.
 - **New Zealand English** throughout all copy.
-- **Image captions are the image name only** — a short title of two or three words (e.g. "Curved Corner Nook"), no descriptions, step numbers or extra wording. Where images are inspiration-only, say so once in the section intro text, not in each caption.
+- **Image captions are the layout name only** — e.g. "U-Shaped Booth Seating", "L-Shaped Banquette Seating", "Bay Window Seat". No descriptions of colours, materials or finishes, and no extra wording. Where images are inspiration-only, say so once in the section intro text, not in each caption.
 
 ---
 
