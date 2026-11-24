@@ -1269,3 +1269,268 @@ img.is-enlargeable:focus-visible { outline: 3px solid var(--clr-green); outline-
 @media (max-width: 639px) {
   .image-viewer__close { top: var(--sp-2); right: var(--sp-2); }
 }
+
+/* ========================================
+   PHOTO ENQUIRY (booth seating page)
+   One photo, optional layout, name, phone/email.
+======================================== */
+
+.photo-form {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: left;
+  display: grid;
+  gap: var(--sp-5);
+}
+/* File input is visually hidden but stays focusable; the big label is the target */
+.photo-input {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+.photo-drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: 220px;
+  padding: var(--sp-6);
+  border: 2px dashed rgba(255,255,255,0.45);
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.06);
+  color: var(--clr-white);
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.photo-drop:hover { border-color: var(--clr-green); background: rgba(255,255,255,0.1); }
+.photo-input:focus-visible + .photo-drop { outline: 3px solid var(--clr-green); outline-offset: 3px; }
+.photo-drop__icon { color: var(--clr-green); }
+.photo-drop__text { font-size: var(--text-lg); font-weight: var(--fw-bold); }
+.photo-drop__hint { font-size: var(--text-sm); color: rgba(255,255,255,0.72); }
+.photo-drop__preview {
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+.photo-drop.has-photo { border-style: solid; border-color: var(--clr-green); }
+.photo-drop.has-photo .photo-drop__icon { display: none; }
+.photo-drop.is-invalid { border-color: #ff8a80; }
+
+.layout-picker { border: 0; padding: 0; margin: 0; }
+.layout-picker legend {
+  color: var(--clr-white);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--sp-3);
+}
+.layout-picker .optional { font-weight: var(--fw-regular); color: rgba(255,255,255,0.65); }
+.layout-chips { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.layout-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.layout-chip span {
+  display: inline-block;
+  min-height: 44px;
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 999px;
+  color: var(--clr-white);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  cursor: pointer;
+}
+.layout-chip span:hover { border-color: var(--clr-green); }
+.layout-chip input:checked + span {
+  background: var(--clr-green);
+  border-color: var(--clr-green);
+  color: var(--clr-navy);
+  font-weight: var(--fw-semibold);
+}
+.layout-chip input:focus-visible + span { outline: 3px solid var(--clr-green); outline-offset: 2px; }
+
+.photo-form__row { display: grid; gap: var(--sp-4); }
+@media (min-width: 560px) { .photo-form__row { grid-template-columns: 1fr 1fr; } }
+.photo-enquiry .form-group label { color: var(--clr-white); }
+.photo-enquiry .form-group { margin: 0; }
+
+.photo-enquiry .photo-form__error {
+  max-width: none;
+  margin: 0;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius-md);
+  background: #fdecea;
+  color: #8a1c13;
+  font-size: var(--text-sm);
+}
+.photo-form__submit { width: 100%; justify-content: center; }
+.photo-enquiry .photo-form__note {
+  margin: 0;
+  text-align: center;
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.72);
+}
+.photo-enquiry .photo-form__note a { color: var(--clr-white); }
+
+/* ========================================
+   RENDER ENQUIRY PAGE (booth-seating-render.html)
+   Light-background version of the photo form, with tap-to-choose chips.
+======================================== */
+
+.render-form {
+  max-width: 680px;
+  margin: 0 auto;
+  display: grid;
+  gap: var(--sp-8);
+}
+.render-q { border: 0; padding: 0; margin: 0; display: grid; gap: var(--sp-3); }
+.render-q legend {
+  font-size: var(--text-lg);
+  font-weight: var(--fw-bold);
+  color: var(--clr-dark);
+  margin-bottom: var(--sp-3);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.render-q__num {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem; height: 2rem;
+  border-radius: 50%;
+  background: var(--clr-green-tint);
+  color: var(--clr-green-dark);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-bold);
+  flex-shrink: 0;
+}
+.render-q__hint { margin: 0; color: var(--clr-mid); font-size: var(--text-sm); }
+.render-form__optional-note {
+  margin: 0;
+  padding: var(--sp-4) var(--sp-5);
+  background: var(--clr-light);
+  border-left: 4px solid var(--clr-green);
+  border-radius: var(--radius-md);
+  color: var(--clr-mid);
+}
+.render-form .optional { font-weight: var(--fw-regular); color: var(--clr-muted); }
+.render-form__row { display: grid; gap: var(--sp-4); }
+@media (min-width: 560px) { .render-form__row { grid-template-columns: 1fr 1fr; } }
+.render-form .form-group { margin: 0; }
+.render-form__note { margin: 0; text-align: center; font-size: var(--text-sm); color: var(--clr-mid); }
+
+/* Photo drop zone on a light background */
+.render-form .photo-drop {
+  border-color: var(--clr-border);
+  background: var(--clr-light);
+  color: var(--clr-dark);
+  min-height: 240px;
+}
+.render-form .photo-drop:hover { border-color: var(--clr-green-dark); background: var(--clr-green-tint); }
+.render-form .photo-drop__icon { color: var(--clr-green-dark); }
+.render-form .photo-drop__hint { color: var(--clr-mid); }
+.render-form .photo-drop.has-photo { border-color: var(--clr-green-dark); }
+.render-form .photo-input:focus-visible + .photo-drop { outline-color: var(--clr-green-dark); }
+.render-form .photo-form__error {
+  margin: 0;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius-md);
+  background: #fdecea;
+  color: #8a1c13;
+  font-size: var(--text-sm);
+}
+
+/* Tap-to-choose chips */
+.chips { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.chip span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 44px;
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--clr-border);
+  border-radius: 999px;
+  background: var(--clr-white);
+  color: var(--clr-dark);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.chip span:hover { border-color: var(--clr-green-dark); }
+.chip input:checked + span {
+  background: var(--clr-navy);
+  border-color: var(--clr-navy);
+  color: var(--clr-white);
+  font-weight: var(--fw-semibold);
+}
+.chip input:focus-visible + span { outline: 3px solid var(--clr-green-dark); outline-offset: 2px; }
+.swatch {
+  width: 1.25rem; height: 1.25rem;
+  border-radius: 50%;
+  background: var(--sw);
+  border: 1px solid rgba(0,0,0,0.15);
+  flex-shrink: 0;
+}
+.chip input:checked + span .swatch { border-color: rgba(255,255,255,0.8); box-shadow: 0 0 0 2px var(--clr-navy), 0 0 0 3px var(--clr-white); }
+
+/* ========================================
+   STEP-BY-STEP APP MODE for the render form
+   (added by main.js; without JS the full form shows)
+======================================== */
+
+.render-q[hidden],
+.render-form [hidden] { display: none !important; }
+
+.render-form.is-app {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 30px rgba(13, 28, 46, 0.08);
+  padding: var(--sp-6);
+  gap: var(--sp-6);
+  max-width: 600px;
+  scroll-margin-top: 100px;
+}
+@media (min-width: 640px) { .render-form.is-app { padding: var(--sp-10); } }
+
+.is-app .render-form__optional-note { display: none; }
+.is-app .render-q { min-height: 220px; align-content: start; }
+.is-app .render-q:focus { outline: none; }
+.is-app .render-q legend { font-size: var(--text-xl); }
+
+/* Bigger, easier tap targets in app mode */
+.is-app .chips { gap: var(--sp-3); }
+.is-app .chip span { min-height: 52px; padding: var(--sp-3) var(--sp-5); font-size: var(--text-base); }
+
+.app-progress__bar {
+  height: 6px;
+  background: var(--clr-light);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.app-progress__bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--clr-green);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+.app-progress__label { margin: var(--sp-2) 0 0; font-size: var(--text-sm); color: var(--clr-muted); }
+
+.app-nav { display: flex; gap: var(--sp-3); }
+.app-nav .btn { flex: 1; justify-content: center; min-height: 52px; }
+.app-nav__back { flex: 0 0 auto !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .app-progress__bar span { transition: none; }
+}
+
+.is-app .render-q__num { display: none; }
+
+/* Final step: name, email, phone stacked */
+.render-form__contact { display: grid; gap: var(--sp-4); }

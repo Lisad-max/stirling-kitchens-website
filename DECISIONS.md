@@ -91,3 +91,11 @@ The 404 page has `<meta name="robots" content="noindex">` and is not listed in `
 
 **Trade-offs:** Custom Furniture still has a booth seating section; it now links to the new page. Its booth content should be trimmed over time so the two pages don't compete for the same searches. The new page is linked from the footer on every page but not added to the main navigation, which keeps the menu to six items.
 
+## Booth enquiries go through a "send us your corner" render page (Nov 2026)
+
+**Decision:** Booth seating enquiries use a dedicated page (`booth-seating-render.html`). The customer sends a photo of their corner and taps optional choices (layout, timber, upholstery colour and type, back style, storage, table, seats, style). Stirling Kitchens replies with a render.
+
+**Why:** A render of their own space is a far stronger reason to enquire than "request a quote", and a photo is easier to send than a written description. Every question except the photo, name and contact is optional and defaults to "Not sure", so the form stays quick.
+
+**Trade-off:** On the booth seating page, "Send Us Your Corner" is now the main button in the final section, with Call next to it. Site-wide, calling is still the primary action.
+
