@@ -1143,3 +1143,12 @@ ol.process-steps { list-style: none; padding: 0; margin: 0; }
   padding: 0 var(--sp-5) var(--sp-5);
   color: var(--clr-mid);
 }
+
+/* Booth seating: measure & design strip under "How it works" */
+.measure-design { margin-top: var(--sp-12); }
+.measure-design > h3 { margin-bottom: var(--sp-3); }
+.measure-design > p { max-width: var(--max-w-text); margin-bottom: var(--sp-6); }
+.gallery-item--labelled .gallery-item__caption { opacity: 1; }
+.gallery-item--labelled:hover img { transform: none; }
+.gallery-item--drawing { background-color: var(--clr-white); border: 1px solid var(--clr-border); }
+.gallery-item--drawing img { object-fit: contain; }
