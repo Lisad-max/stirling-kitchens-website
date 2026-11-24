@@ -1212,16 +1212,3 @@ ol.process-steps { list-style: none; padding: 0; margin: 0; }
   .why-layout { grid-template-columns: 1fr 1fr; }
   .why-layout .booth-features { grid-template-columns: 1fr; }
 }
-
-/* Layout cards: a card left alone on the last row becomes a wide card */
-@media (min-width: 640px) and (max-width: 1023px) {
-  .layout-card:last-child:nth-child(odd) { grid-column: 1 / -1; flex-direction: row; }
-  .layout-card:last-child:nth-child(odd) .layout-card__image { flex: 0 0 50%; }
-  .layout-card:last-child:nth-child(odd) .layout-card__body { align-self: center; }
-}
-@media (min-width: 1024px) {
-  .layout-card:last-child:nth-child(3n+1) { grid-column: 1 / -1; flex-direction: row; }
-  .layout-card:last-child:nth-child(3n+1) .layout-card__image { flex: 0 0 calc((100% - 2 * var(--sp-5)) / 3 * 2 + var(--sp-5)); }
-  .layout-card:last-child:nth-child(3n+1) .layout-card__body { align-self: center; padding: var(--sp-8); }
-  .layout-card:last-child:nth-child(3n+1) .layout-card__body h3 { font-size: var(--text-xl); }
-}
