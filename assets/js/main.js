@@ -243,6 +243,114 @@
   }
 
   /* -----------------------------------------
+     "Send us your corner" step-by-step app
+     Turns the render form into one question per screen.
+     Without JavaScript the full form still shows and works.
+  ----------------------------------------- */
+  var appForm = document.querySelector('.render-form');
+  if (appForm) {
+    var steps = Array.prototype.slice.call(appForm.querySelectorAll('.render-q'));
+    var total = steps.length;
+    var current = 0;
+    var submitBtn = appForm.querySelector('.photo-form__submit');
+    var errBox = appForm.querySelector('.photo-form__error');
+
+    appForm.classList.add('is-app');
+
+    // Progress bar
+    var progress = document.createElement('div');
+    progress.className = 'app-progress';
+    progress.innerHTML = '<div class="app-progress__bar"><span></span></div><p class="app-progress__label" aria-live="polite"></p>';
+    appForm.insertBefore(progress, appForm.firstChild);
+    var bar = progress.querySelector('.app-progress__bar span');
+    var label = progress.querySelector('.app-progress__label');
+
+    // Back / Next buttons
+    var nav = document.createElement('div');
+    nav.className = 'app-nav';
+    nav.innerHTML = '<button type="button" class="btn btn-secondary app-nav__back">Back</button>' +
+                    '<button type="button" class="btn btn-primary app-nav__next">Next</button>';
+    submitBtn.parentNode.insertBefore(nav, submitBtn);
+    var backBtn = nav.querySelector('.app-nav__back');
+    var nextBtn = nav.querySelector('.app-nav__next');
+
+    var isChoiceStep = function (step) { return !!step.querySelector('.chips'); };
+
+    var show = function (i, focus) {
+      current = i;
+      steps.forEach(function (s, n) { s.hidden = n !== i; });
+      var step = steps[i];
+      var last = i === total - 1;
+      bar.style.width = Math.round(((i + 1) / total) * 100) + '%';
+      label.textContent = 'Step ' + (i + 1) + ' of ' + total;
+      backBtn.hidden = i === 0;
+      nextBtn.hidden = last;
+      submitBtn.hidden = !last;
+      // On choice questions, "Next" reads "Skip" until something other than "Not sure" is picked
+      if (isChoiceStep(step)) {
+        var picked = step.querySelector('input:checked');
+        nextBtn.textContent = picked && picked.value !== 'Not sure' ? 'Next' : 'Skip';
+      } else {
+        nextBtn.textContent = 'Next';
+      }
+      errBox.hidden = true;
+      if (focus) {
+        step.setAttribute('tabindex', '-1');
+        step.focus({ preventScroll: true });
+        appForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
+    var canLeave = function (i) {
+      if (i === 0) {
+        var file = appForm.querySelector('.photo-input').files[0];
+        if (!file) {
+          errBox.textContent = 'Add a photo of your corner first.';
+          errBox.hidden = false;
+          appForm.querySelector('.photo-drop').classList.add('is-invalid');
+          return false;
+        }
+      }
+      return true;
+    };
+
+    nextBtn.addEventListener('click', function () {
+      if (canLeave(current) && current < total - 1) show(current + 1, true);
+    });
+    backBtn.addEventListener('click', function () {
+      if (current > 0) show(current - 1, true);
+    });
+
+    // Tapping an answer moves on by itself
+    steps.forEach(function (step, n) {
+      if (!isChoiceStep(step)) return;
+      step.addEventListener('click', function (e) {
+        var chip = e.target.closest('.chip');
+        if (!chip) return;
+        setTimeout(function () { if (current === n && n < total - 1) show(n + 1, true); }, 250);
+      });
+    });
+
+    // Enter in a text box goes to the next step instead of sending early
+    appForm.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && e.target.tagName === 'INPUT' && current < total - 1) {
+        e.preventDefault();
+        nextBtn.click();
+      }
+    });
+
+    // If the main form check stops a send, jump to the step with the problem
+    appForm.addEventListener('submit', function (e) {
+      if (!e.defaultPrevented) return;
+      var photo = appForm.querySelector('.photo-input').files[0];
+      show(photo ? total - 1 : 0, false);
+      errBox.hidden = false;
+    });
+
+    show(0, false);
+  }
+
+  /* -----------------------------------------
      Call buttons on computers
      A tel: link can't dial from a desktop browser — it just asks to open
      an app (FaceTime, Teams, Skype). On mouse-based devices, clicking a

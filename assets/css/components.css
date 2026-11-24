@@ -1476,3 +1476,58 @@ img.is-enlargeable:focus-visible { outline: 3px solid var(--clr-green); outline-
   flex-shrink: 0;
 }
 .chip input:checked + span .swatch { border-color: rgba(255,255,255,0.8); box-shadow: 0 0 0 2px var(--clr-navy), 0 0 0 3px var(--clr-white); }
+
+/* ========================================
+   STEP-BY-STEP APP MODE for the render form
+   (added by main.js; without JS the full form shows)
+======================================== */
+
+.render-q[hidden],
+.render-form [hidden] { display: none !important; }
+
+.render-form.is-app {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 30px rgba(13, 28, 46, 0.08);
+  padding: var(--sp-6);
+  gap: var(--sp-6);
+  max-width: 600px;
+  scroll-margin-top: 100px;
+}
+@media (min-width: 640px) { .render-form.is-app { padding: var(--sp-10); } }
+
+.is-app .render-form__optional-note { display: none; }
+.is-app .render-q { min-height: 220px; align-content: start; }
+.is-app .render-q:focus { outline: none; }
+.is-app .render-q legend { font-size: var(--text-xl); }
+
+/* Bigger, easier tap targets in app mode */
+.is-app .chips { gap: var(--sp-3); }
+.is-app .chip span { min-height: 52px; padding: var(--sp-3) var(--sp-5); font-size: var(--text-base); }
+
+.app-progress__bar {
+  height: 6px;
+  background: var(--clr-light);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.app-progress__bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--clr-green);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+.app-progress__label { margin: var(--sp-2) 0 0; font-size: var(--text-sm); color: var(--clr-muted); }
+
+.app-nav { display: flex; gap: var(--sp-3); }
+.app-nav .btn { flex: 1; justify-content: center; min-height: 52px; }
+.app-nav__back { flex: 0 0 auto !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .app-progress__bar span { transition: none; }
+}
+
+.is-app .render-q__num { display: none; }
