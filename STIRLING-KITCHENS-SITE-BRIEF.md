@@ -90,7 +90,7 @@ Real team members supplied by the business. Copy below is drafted for the About 
 **[PHOTO PLACEHOLDER — Craig headshot or at-work shot]**
 
 **Craig — Designer**
-Twenty-five years in the industry has given Craig an eye for kitchen design that can't be taught in a classroom. He's sat across the table from hundreds of families over the decades, listening to how they actually live — where the school bags land, who does the cooking, what drives everyone mad about their old layout — and turned it into a design that works from the very first morning. That depth of knowledge means Craig isn't just drawing a pretty kitchen; he's solving the practical problems most people don't think to ask about until it's too late to fix them.
+Thirty years in the industry has given Craig an eye for kitchen design that can't be taught in a classroom. He's sat across the table from hundreds of families over the decades, listening to how they actually live — where the school bags land, who does the cooking, what drives everyone mad about their old layout — and turned it into a design that works from the very first morning. That depth of knowledge means Craig isn't just drawing a pretty kitchen; he's solving the practical problems most people don't think to ask about until it's too late to fix them.
 
 **[PHOTO PLACEHOLDER — Stacy headshot or on-site installing]**
 
