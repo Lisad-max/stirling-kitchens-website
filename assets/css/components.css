@@ -1155,3 +1155,45 @@ ol.process-steps { list-style: none; padding: 0; margin: 0; }
 @media (min-width: 768px) {
   .measure-design .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* Booth seating: layout cards with a picture */
+.layout-cards {
+  display: grid;
+  gap: var(--sp-5);
+}
+@media (min-width: 640px) {
+  .layout-cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .layout-cards { grid-template-columns: repeat(3, 1fr); }
+}
+.layout-card {
+  background: var(--clr-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.layout-card__image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+}
+.layout-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.layout-card__tag {
+  position: absolute;
+  top: var(--sp-3);
+  left: var(--sp-3);
+  padding: 2px var(--sp-2);
+  border-radius: var(--radius-md);
+  background: rgba(13, 28, 46, 0.70);
+  color: var(--clr-white);
+  font-size: var(--text-xs);
+}
+.layout-card__body { padding: var(--sp-5) var(--sp-6) var(--sp-6); }
+.layout-card__body h3 { font-size: var(--text-lg); margin-bottom: var(--sp-2); }
+.layout-card__body p { font-size: var(--text-sm); color: var(--clr-mid); max-width: none; }
