@@ -88,4 +88,63 @@
     });
   }
 
+  /* -----------------------------------------
+     Call buttons on computers
+     A tel: link can't dial from a desktop browser — it just asks to open
+     an app (FaceTime, Teams, Skype). On mouse-based devices, clicking a
+     call button instead shows the number on the button and copies it.
+     Phones and tablets are untouched and dial as normal.
+  ----------------------------------------- */
+  var isDesktop = window.matchMedia &&
+    window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (isDesktop) {
+    var status = document.createElement('div');
+    status.setAttribute('role', 'status');
+    status.className = 'visually-hidden';
+    status.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;';
+    document.body.appendChild(status);
+
+    var formatNz = function (href) {
+      var digits = href.replace(/[^0-9+]/g, '').replace(/^\+64/, '0');
+      if (/^02\d{7,8}$/.test(digits)) {            // mobile: 021 144 3301
+        return digits.slice(0, 3) + ' ' + digits.slice(3, 6) + ' ' + digits.slice(6);
+      }
+      if (/^0\d{8}$/.test(digits)) {               // landline: 09 279 8984
+        return digits.slice(0, 2) + ' ' + digits.slice(2, 5) + ' ' + digits.slice(5);
+      }
+      return digits;
+    };
+
+    document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var number = formatNz(link.getAttribute('href').slice(4));
+
+        // Show the number on the button (keep the phone icon)
+        if (link.textContent.indexOf(number) === -1) {
+          var icon = link.querySelector('svg');
+          link.textContent = '';
+          if (icon) { link.appendChild(icon); link.appendChild(document.createTextNode(' ')); }
+          link.appendChild(document.createTextNode(number));
+        }
+
+        var announce = function (msg) {
+          status.textContent = '';
+          setTimeout(function () { status.textContent = msg; }, 50);
+          link.setAttribute('title', msg);
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(number).then(
+            function () { announce('Call us on ' + number + ' (number copied)'); },
+            function () { announce('Call us on ' + number); }
+          );
+        } else {
+          announce('Call us on ' + number);
+        }
+      });
+    });
+  }
+
 })();
