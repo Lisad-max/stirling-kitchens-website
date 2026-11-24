@@ -12,12 +12,12 @@
 - FAQ accordion styles added to `assets/css/components.css`
 
 ## Filled in (24 Nov 2026)
-- **Price:** "starts from $8,000", in both the visible FAQ and the JSON-LD `FAQPage` block
+- **Price:** "starts from $9,000", in both the visible FAQ and the JSON-LD `FAQPage` block
 - **Lead time:** "4 to 6 weeks from design sign-off to installation (conditions apply)", in both places
 - `.placeholder` style removed from `components.css` (no placeholders left on the page)
 
 ## Still needed before publishing
-1. Confirm whether the $8,000 starting price includes GST and installation, and adjust the wording if needed
+1. Confirm whether the $9,000 starting price includes GST and installation, and adjust the wording if needed
 2. Confirm the general dimensions in the FAQ (seat ~450 mm high, 450–500 mm deep, ~1.5 m per wall for a corner nook)
 3. Confirm the FAQ statements about existing kitchens, under-seat storage, matching cabinetry finishes and measuring on site
 4. Swap the three inspiration images for real Stirling Kitchens booth photos when available (can happen after launch)
