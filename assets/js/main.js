@@ -110,12 +110,13 @@
       if (field) field.focus();
     };
 
-    var shrinkPhoto = function (file) {
-      // Resize to max 2400px wide/high as a JPEG. Resolves with a File, or null if not possible.
+    var shrinkPhoto = function (file, maxSide) {
+      // Resize to max 2400px (or maxSide) wide/high as a JPEG. Resolves with a File, or null if not possible.
+      maxSide = maxSide || 2400;
       return new Promise(function (resolve) {
         if (!window.createImageBitmap || !window.DataTransfer) { resolve(null); return; }
         createImageBitmap(file).then(function (bmp) {
-          var scale = Math.min(1, 2400 / Math.max(bmp.width, bmp.height));
+          var scale = Math.min(1, maxSide / Math.max(bmp.width, bmp.height));
           var canvas = document.createElement('canvas');
           canvas.width = Math.round(bmp.width * scale);
           canvas.height = Math.round(bmp.height * scale);
@@ -242,6 +243,33 @@
       var btn = photoForm.querySelector('.photo-form__submit');
       btn.textContent = 'Sending…';
       btn.disabled = true;
+
+      // Old browsers: let the form post the normal way
+      if (!window.fetch || !window.FormData) return;
+
+      // Send in the background so a slow or failed upload never leaves
+      // the button stuck on "Sending…"
+      e.preventDefault();
+      photoForm.dataset.sending = 'yes';
+      var failed = function () {
+        photoForm.dataset.sending = '';
+        btn.textContent = submitLabel;
+        btn.disabled = false;
+        showError('Sorry, that did not send. Check your internet connection and tap "' + submitLabel + '" again, or email your photo to admin@stirlingkitchens.co.nz.');
+      };
+      shrinkPhoto(file, 2000).then(function (small) {
+        var data = new FormData(photoForm);
+        if (small && small.size < file.size) data.set('photo', small, small.name);
+        btn.textContent = 'Sending your photo…';
+        var controller = window.AbortController ? new AbortController() : null;
+        var timer = setTimeout(function () { if (controller) controller.abort(); }, 90000);
+        return fetch('/', { method: 'POST', body: data, signal: controller ? controller.signal : undefined })
+          .then(function (res) {
+            clearTimeout(timer);
+            if (!res.ok) throw new Error('Status ' + res.status);
+            window.location.href = photoForm.getAttribute('action') || 'thank-you.html';
+          });
+      }).catch(failed);
     });
 
     // If someone comes back with the browser's Back button, reset the button
@@ -249,6 +277,7 @@
       var btn = photoForm.querySelector('.photo-form__submit');
       btn.textContent = submitLabel;
       btn.disabled = false;
+      photoForm.dataset.sending = '';
     });
   }
 
@@ -351,7 +380,7 @@
 
     // If the main form check stops a send, jump to the step with the problem
     appForm.addEventListener('submit', function (e) {
-      if (!e.defaultPrevented) return;
+      if (!e.defaultPrevented || appForm.dataset.sending === 'yes') return;
       var photo = appForm.querySelector('.photo-input').files[0];
       show(photo ? total - 1 : 0, false);
       errBox.hidden = false;
