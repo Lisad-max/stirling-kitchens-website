@@ -130,6 +130,21 @@
       });
     };
 
+    // Phones only lend the page the chosen photo for a short time (photos from
+    // Google Photos / iCloud especially). Copy it into the page straight away,
+    // shrunk to 2000px, so it can still be sent several steps later.
+    var readyPhoto = null;
+    var photoReady = Promise.resolve(null);
+    var copyPhoto = function (file) {
+      return shrinkPhoto(file, 2000).then(function (small) {
+        if (small) return small;
+        if (!file.arrayBuffer || file.size > MAX_BYTES) return null;
+        return file.arrayBuffer().then(function (buf) {
+          return new File([buf], file.name, { type: file.type || 'image/jpeg' });
+        });
+      }).catch(function () { return null; });
+    };
+
     var submitLabel = photoForm.querySelector('.photo-form__submit').textContent;
 
     // Turns the customer's answers into a ready-to-paste image prompt (ChatGPT etc.).
@@ -185,20 +200,22 @@
       dropText.textContent = 'Photo added';
       dropHint.textContent = 'Tap to change it';
 
-      if (file.size > MAX_BYTES) {
-        dropHint.textContent = 'Making the photo smaller so it sends…';
-        shrinkPhoto(file).then(function (small) {
-          if (small) {
-            var dt = new DataTransfer();
-            dt.items.add(small);
-            photoInput.files = dt.files;
-            dropHint.textContent = 'Tap to change it';
-          } else {
-            dropHint.textContent = 'Tap to change it';
-            showError('That photo is too big to send. Try a screenshot of it, or email it to admin@stirlingkitchens.co.nz.');
-          }
-        });
-      }
+      readyPhoto = null;
+      dropHint.textContent = 'Getting your photo ready…';
+      photoReady = copyPhoto(file).then(function (copy) {
+        if (photoInput.files[0] !== file) return readyPhoto; // a newer photo was chosen
+        readyPhoto = copy;
+        dropHint.textContent = 'Tap to change it';
+        if (copy && window.DataTransfer) {
+          try { var dt = new DataTransfer(); dt.items.add(copy); photoInput.files = dt.files; } catch (x) {}
+        }
+        if (!copy) {
+          showError(file.size > MAX_BYTES
+            ? 'That photo is too big to send. Try a screenshot of it, or email it to admin@stirlingkitchens.co.nz.'
+            : 'We couldn’t open that photo. Tap the box to choose it again, or take a new photo.');
+        }
+        return copy;
+      });
     });
 
     // Clear an error as soon as the person starts fixing that field
@@ -211,7 +228,7 @@
 
     photoForm.addEventListener('submit', function (e) {
       errorBox.hidden = true;
-      var file = photoInput.files && photoInput.files[0];
+      var file = readyPhoto || (photoInput.files && photoInput.files[0]);
       var name = photoForm.querySelector('#pf-name');
       var email = photoForm.querySelector('#pf-email');
       [name, email].forEach(function (f) { if (f) f.removeAttribute('aria-invalid'); });
@@ -251,22 +268,18 @@
       // the button stuck on "Sending…"
       e.preventDefault();
       photoForm.dataset.sending = 'yes';
-      var smallPhoto = null;
       var note = photoForm.querySelector('input[name="send-note"]');
       // If the background send doesn't work (some phone browsers), post the
       // form the normal way instead, with the smaller photo if possible.
       // The reason is recorded in "send-note" so we can see it in Netlify.
       var failed = function (err) {
         if (note) note.value = 'Sent the standard way. Background send failed: ' + (err && (err.name + ': ' + err.message) || 'unknown');
-        if (smallPhoto && window.DataTransfer) {
-          try { var dt = new DataTransfer(); dt.items.add(smallPhoto); photoInput.files = dt.files; } catch (x) {}
-        }
         btn.textContent = 'Sending your photo…';
         HTMLFormElement.prototype.submit.call(photoForm);
       };
-      shrinkPhoto(file, 2000).then(function (small) {
+      photoReady.then(function (copy) {
         var data = new FormData(photoForm);
-        if (small && small.size < file.size) { smallPhoto = small; data.set('photo', small, small.name); }
+        if (copy) data.set('photo', copy, copy.name);
         btn.textContent = 'Sending your photo…';
         var controller = window.AbortController ? new AbortController() : null;
         var timer = setTimeout(function () { if (controller) controller.abort(); }, 90000);
