@@ -251,15 +251,22 @@
       // the button stuck on "Sending…"
       e.preventDefault();
       photoForm.dataset.sending = 'yes';
-      var failed = function () {
-        photoForm.dataset.sending = '';
-        btn.textContent = submitLabel;
-        btn.disabled = false;
-        showError('Sorry, that did not send. Check your internet connection and tap "' + submitLabel + '" again, or email your photo to admin@stirlingkitchens.co.nz.');
+      var smallPhoto = null;
+      var note = photoForm.querySelector('input[name="send-note"]');
+      // If the background send doesn't work (some phone browsers), post the
+      // form the normal way instead, with the smaller photo if possible.
+      // The reason is recorded in "send-note" so we can see it in Netlify.
+      var failed = function (err) {
+        if (note) note.value = 'Sent the standard way. Background send failed: ' + (err && (err.name + ': ' + err.message) || 'unknown');
+        if (smallPhoto && window.DataTransfer) {
+          try { var dt = new DataTransfer(); dt.items.add(smallPhoto); photoInput.files = dt.files; } catch (x) {}
+        }
+        btn.textContent = 'Sending your photo…';
+        HTMLFormElement.prototype.submit.call(photoForm);
       };
       shrinkPhoto(file, 2000).then(function (small) {
         var data = new FormData(photoForm);
-        if (small && small.size < file.size) data.set('photo', small, small.name);
+        if (small && small.size < file.size) { smallPhoto = small; data.set('photo', small, small.name); }
         btn.textContent = 'Sending your photo…';
         var controller = window.AbortController ? new AbortController() : null;
         var timer = setTimeout(function () { if (controller) controller.abort(); }, 90000);
